@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/ic_launcher_background" />
+        </shape>
+    </item>
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/bogungym_bearbeiten" />
+    </item>
+</layer-list>

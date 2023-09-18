@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "479279906166",
+    "project_id": "bogun-gym",
+    "storage_bucket": "bogun-gym.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479279906166:android:99235ba6548528c9b80e57",
+        "android_client_info": {
+          "package_name": "com.example.bogungym"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYQjhZaFgR0MKSKeUue2UWHzQQ_RkDA14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

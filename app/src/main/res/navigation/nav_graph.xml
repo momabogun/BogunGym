@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.bogungym.ui.HomeFragment"
+        android:label="Bogun Gym"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment2_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.bogungym.ui.ExerciseFragment"
+        android:label="Exercises"
+        tools:layout="@layout/fragment_exercise" >
+        <argument
+            android:name="target"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_exerciseFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.bogungym.ui.DetailFragment"
+        android:label="Exercise Detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/customFragment2"
+        android:name="com.example.bogungym.ui.CustomFragment"
+        android:label="Custom Workout"
+        tools:layout="@layout/fragment_custom" />
+    <fragment
+        android:id="@+id/supplementsFragment"
+        android:name="com.example.bogungym.ui.SupplementsFragment"
+        android:label="Supplements" >
+        <action
+            android:id="@+id/action_supplementsFragment_to_supplementDetailFragment"
+            app:destination="@id/supplementDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/supplementDetailFragment"
+        android:name="com.example.bogungym.ui.SupplementDetailFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_supplement_detail" >
+        <argument
+            android:name="imageID"
+            app:argType="integer" />
+        <argument
+            android:name="detailID"
+            app:argType="integer" />
+        <argument
+            android:name="nameID"
+            app:argType="string" />
+        <argument
+            android:name="beginID"
+            app:argType="boolean" />
+    </fragment>
+</navigation>

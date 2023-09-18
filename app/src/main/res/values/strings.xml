@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Bogun Gym</string>
+    <string name="abs">abs</string>
+    <string name="back">back</string>
+    <string name="chest">chest</string>
+    <string name="legs">legs</string>
+    <string name="biceps">biceps</string>
+    <string name="triceps">triceps</string>
+    <string name="forearm">forearm</string>
+    <string name="shoulders">shoulders</string>
+    <string name="cardio">cardio</string>
+    <string name="calf">calf</string>
+    <string name="click">Click on picture to see specifications</string>
+
+    <string name="alanin">Beta-alanine is a naturally occurring amino acid that plays a crucial role in the synthesis of carnosine, a dipeptide found in high concentrations in muscles and the brain. Carnosine is known for its ability to buffer acidic substances in the body, particularly in muscle tissue. Beta-alanine supplementation is often used by athletes and individuals engaged in high-intensity, short-duration activities to enhance exercise performance and delay the onset of muscle fatigue.
+
+</string>
+    <string name="protein">Whey protein is a high-quality protein derived from milk during the cheese-making process. It is one of the two primary proteins found in milk, with the other being casein. Whey protein has gained popularity as a dietary supplement and ingredient in various food products due to its excellent amino acid profile and numerous potential health benefits.</string>
+    <string name="bcaa">BCAAs are considered essential amino acids because the body cannot produce them on its own, so they must be obtained through dietary sources or supplements. They are commonly found in protein-rich foods such as meat, dairy products, and legumes.</string>
+    <string name="creatine">Creatine monohydrate is a widely used dietary supplement known for its potential to enhance athletic performance, particularly in activities that involve short bursts of high-intensity exercise. It is a compound composed of three amino acids: arginine, glycine, and methionine. </string>
+    <string name="fat_burner">A fat burner is a dietary supplement or product designed to help individuals lose weight by increasing their metabolism and enhancing the bodys ability to burn fat. These products are often marketed as aids for weight loss and typically contain a combination of ingredients that are believed to promote fat loss and boost energy levels. It\'s important to note that the effectiveness and safety of fat burners can vary widely, and their use should be approached with caution.</string>
+    <string name="casein">Casein is a type of protein found in milk and dairy products. It is the primary protein in cows milk, making up about 80% of the total protein content. Casein is also present in the milk of other mammals, although the specific composition may vary.</string>
+    <string name="glutamine">Glutamine is an important amino acid, often referred to as a "conditionally essential" amino acid because while the body can typically produce it, there are certain circumstances where the bodys demand for glutamine exceeds its ability to synthesize it, making it essential through the diet or supplementation. </string>
+    <string name="grow_hormone">Growth hormones, also known as somatotropin or human growth hormone (HGH), are a type of peptide hormone produced and released by the anterior pituitary gland, which is located at the base of the brain. These hormones play a crucial role in regulating growth, development, and various metabolic processes in the body.</string>
+    <string name="l_arginine">L-arginine, often simply referred to as arginine, is an amino acid that plays a crucial role in various physiological processes within the human body. Amino acids are the building blocks of proteins, and arginine is considered a semi-essential amino acid because, under normal circumstances, the body can produce it on its own. However, in certain situations, such as during periods of growth, illness, or stress, the body may require additional arginine from dietary sources.</string>
+    <string name="pre_workout">Pre-workout supplements, often simply referred to as "pre-workouts," are dietary supplements designed to enhance an individual\'s performance during exercise or workouts. They typically come in the form of a powder or drink mix that you consume before your workout. Pre-workout supplements usually contain a combination of various ingredients, each with specific purposes, to help you achieve better results and optimize your exercise sessions.</string>
+    <string name="omega_oil">Omega oils, often referred to as omega fatty acids or simply omegas, are a group of essential polyunsaturated fats that play a crucial role in maintaining good health. These fatty acids are termed "essential" because the human body cannot produce them on its own and must obtain them through dietary sources.</string>
+    <string name="zink_vitamins">Zinc is an essential mineral that plays a vital role in various bodily functions and is commonly referred to as a "trace element" because it is required in small amounts for overall health. It is a crucial component of many enzymes, proteins, and cellular processes in the body. Zinc vitamins, often known as zinc supplements, provide a concentrated dose of this mineral to help individuals meet their daily zinc requirements when their diet may not supply enough.
+
+</string>
+    <string name="testosteron">Testosterone pills are a medication designed to supplement or replace the body\'s natural production of testosterone, which is a hormone primarily associated with male sexual development and characteristics. These pills are typically used to treat conditions in which the body does not produce enough testosterone, such as hypogonadism or certain hormonal imbalances.</string>
+    <string name="gainer">A mass gainer, also known as a weight gainer, is a type of dietary supplement that is designed to help individuals gain muscle mass and increase their overall body weight. These products are particularly popular among athletes, bodybuilders, and individuals who have difficulty gaining weight through a regular diet alone.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="beginners">Beginners Friendly</string>
+    <string name="consult_doctor">For usage, consult Doctor</string>
+
+
+
+</resources>
