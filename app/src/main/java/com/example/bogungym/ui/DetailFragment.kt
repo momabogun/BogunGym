@@ -28,6 +28,8 @@ class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
 
+
+
     private var id: String = ""
 
     private lateinit var exercise: Exercises
