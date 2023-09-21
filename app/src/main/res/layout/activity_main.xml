@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="?colorSecondary"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,15 +20,14 @@
             android:layout_height="match_parent">
 
 
-
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/myToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?colorOnPrimary"
+                android:background="?colorSecondary"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:title=" "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -44,6 +44,39 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/logoIV_light"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                app:layout_constraintEnd_toEndOf="@+id/myToolbar"
+                app:layout_constraintStart_toStartOf="@+id/myToolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/_toolbar_light" />
+
+            <ImageView
+                android:id="@+id/logoIV_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/myToolbar"
+                app:layout_constraintStart_toStartOf="@+id/myToolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/_toolbar_black" />
+
+            <ImageView
+                android:id="@+id/back_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:srcCompat="@drawable/baseline_arrow_back_24"
+                app:tint="?colorPrimary" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

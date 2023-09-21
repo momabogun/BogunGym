@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_exerciseFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_exerciseFragment_to_customFragment2"
+            app:destination="@id/customFragment2" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -42,7 +45,11 @@
         android:id="@+id/customFragment2"
         android:name="com.example.bogungym.ui.CustomFragment"
         android:label="Custom Workout"
-        tools:layout="@layout/fragment_custom" />
+        tools:layout="@layout/fragment_custom" >
+        <argument
+            android:name="target"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/supplementsFragment"
         android:name="com.example.bogungym.ui.SupplementsFragment"

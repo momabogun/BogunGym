@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
@@ -44,12 +45,36 @@ class MainActivity : AppCompatActivity() {
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment) {
+            if(destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment) {
                 binding.bottomNavBMV.visibility = View.GONE
                 binding.appBarLayout.visibility = View.GONE
             } else {
                 binding.bottomNavBMV.visibility = View.VISIBLE
                 binding.appBarLayout.visibility = View.VISIBLE
+            }
+        }
+
+        val isNightMode =
+            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+
+        if (isNightMode){
+            binding.logoIVDark.visibility = View.VISIBLE
+        } else{
+            binding.logoIVDark.visibility = View.GONE
+        }
+
+        binding.backIcon.setOnClickListener {
+            onSupportNavigateUp()
+        }
+
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.homeFragment) {
+                binding.profileIV.visibility = View.VISIBLE
+                binding.backIcon.visibility = View.GONE
+            } else {
+                binding.profileIV.visibility = View.GONE
+                binding.backIcon.visibility = View.VISIBLE
             }
         }
 

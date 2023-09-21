@@ -14,20 +14,20 @@
         android:layout_marginStart="24dp"
         android:gravity="center"
         android:text="Workout Name:"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/myWorkET"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/myWorkET"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="@+id/myWorkET" />
 
     <EditText
         android:id="@+id/myWorkET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="text"
         android:text="Custom Workout"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nameTV"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,9 +38,9 @@
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="Workout Days:"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/nameTV"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/nameTV" />
 
     <EditText
         android:id="@+id/numberET"
@@ -48,50 +48,39 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/daysTV"
         app:layout_constraintEnd_toEndOf="@+id/myWorkET"
         app:layout_constraintStart_toStartOf="@+id/myWorkET"
-        app:layout_constraintTop_toTopOf="@+id/daysTV"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="@+id/daysTV" />
 
     <Button
         android:id="@+id/saveBTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="?colorPrimary"
+        android:text="Save"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/cancelBTN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberET"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/cancelBTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Cancel"
-        android:backgroundTint="?colorPrimary"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="?colorPrimary"
+        android:text="Cancel"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/saveBTN"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/saveBTN"
-        app:layout_constraintTop_toBottomOf="@+id/saveBTN" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="381dp"
-        android:layout_height="254dp"
-        android:src="@drawable/screenshot_2023_05_09_at_19_06_59"
-        app:layout_constraintBottom_toTopOf="@+id/myWorkET"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/saveBTN" />
 
     <Button
         android:id="@+id/newWorkBTN"
@@ -100,8 +89,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Add New Workout"
         android:backgroundTint="?colorPrimaryVariant"
+        android:text="Add New Workout"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -116,6 +106,7 @@
         android:paddingVertical="0dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,9 +119,23 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="1dp"
         android:background="?android:attr/listDivider"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/customRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newWorkBTN" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/daysRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="?colorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/numberET" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

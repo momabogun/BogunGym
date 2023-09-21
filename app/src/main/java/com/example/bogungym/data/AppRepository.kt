@@ -10,8 +10,6 @@ import kotlinx.coroutines.withContext
 
 class AppRepository(private val api: ExercisesApi, private val database: ExercisesDatabase) {
 
-
-
     fun addWorkout(workout: UserWorkout){
         database.exercisesDao.insertWorkout(workout)
     }
@@ -19,20 +17,13 @@ class AppRepository(private val api: ExercisesApi, private val database: Exercis
         database.exercisesDao.deleteWorkout(workout.id)
     }
 
-
     val workoutList: LiveData<List<UserWorkout>> = database.exercisesDao.getAllWorkouts()
-
-
-
-
 
 
     fun getExerciseByMuscle(target: String): LiveData<List<Exercises>> = database.exercisesDao.getExerciseByMuscle(target)
 
 
     fun getExerciseByID(id: String): LiveData<Exercises> = database.exercisesDao.getExerciseByID(id)
-
-
 
 
     val exercisesList: LiveData<List<Exercises>> = database.exercisesDao.getAllExercises()

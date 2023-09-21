@@ -47,7 +47,6 @@ class CustomFragment : Fragment() {
         binding.newWorkBTN.setOnClickListener {
             binding.newWorkBTN.visibility = View.GONE
             binding.customRV.visibility = View.GONE
-            binding.imageView5.visibility = View.VISIBLE
             binding.daysTV.visibility = View.VISIBLE
             binding.numberET.visibility = View.VISIBLE
             binding.myWorkET.visibility = View.VISIBLE
@@ -60,7 +59,6 @@ class CustomFragment : Fragment() {
         binding.cancelBTN.setOnClickListener {
             binding.newWorkBTN.visibility = View.VISIBLE
             binding.customRV.visibility = View.VISIBLE
-            binding.imageView5.visibility = View.GONE
             binding.daysTV.visibility = View.GONE
             binding.numberET.visibility = View.GONE
             binding.myWorkET.visibility = View.GONE
@@ -98,7 +96,6 @@ class CustomFragment : Fragment() {
             insertWorkoutToDatabase()
             binding.newWorkBTN.visibility = View.VISIBLE
             binding.customRV.visibility = View.VISIBLE
-            binding.imageView5.visibility = View.GONE
             binding.daysTV.visibility = View.GONE
             binding.numberET.visibility = View.GONE
             binding.myWorkET.visibility = View.GONE
