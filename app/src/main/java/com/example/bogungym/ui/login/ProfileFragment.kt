@@ -57,10 +57,12 @@ class ProfileFragment : Fragment() {
 
         binding.logOutBTN.setOnClickListener {
             viewModel.signOut()
-            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToSignUpFragment())
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOnboardingFragment())
         }
 
         binding.editBTN.setOnClickListener {
+
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToHomeFragment())
             val name = binding.editTextInputName.text.toString()
             val weight = binding.editTextInputWeight.text.toString().toInt()
             val height = binding.editTextInputHeight.text.toString().toInt()
@@ -86,6 +88,7 @@ class ProfileFragment : Fragment() {
                 binding.editTextInputHeight.setText(p?.height.toString())
                 binding.editTextInputWeight.setText(p?.weight.toString())
             }
+
         }
 
         binding.emailProfileTV.text = user.email

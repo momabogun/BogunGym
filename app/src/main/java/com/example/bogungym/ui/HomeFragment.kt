@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
 
         viewModel.user.observe(viewLifecycleOwner){
             if (it == null){
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSignUpFragment())
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToOnboardingFragment())
             }
         }
 

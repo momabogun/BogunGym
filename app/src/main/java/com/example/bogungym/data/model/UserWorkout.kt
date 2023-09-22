@@ -9,6 +9,6 @@ data class UserWorkout(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     val name: String,
-    val days: Int,
+    val days: Int
 
 )

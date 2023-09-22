@@ -1,21 +1,21 @@
 package com.example.bogungym.ui.login
 
-
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.bogungym.MainActivity
+import com.example.bogungym.R
 import com.example.bogungym.databinding.FragmentLoginBinding
+import com.example.bogungym.databinding.FragmentOnboardingBinding
 
-class LoginFragment : Fragment() {
+
+class OnboardingFragment : Fragment() {
 
     val viewModel: FirebaseViewModel by activityViewModels()
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentOnboardingBinding
 
 
 
@@ -23,29 +23,26 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        binding = FragmentOnboardingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.loginBTN.setOnClickListener {
-            val email = binding.loginEmail.text.toString()
-            val password = binding.loginPassword.text.toString()
-
-            viewModel.login(email, password)
+        binding.emailOnboardBTN.setOnClickListener {
+            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment())
         }
 
-        binding.goSignUpTV.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToPasswordResetFragment())
+        binding.loginTV.setOnClickListener {
+            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment())
         }
 
 
 
         viewModel.user.observe(viewLifecycleOwner){
             if(it != null){
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToHomeFragment())
             }
         }
 

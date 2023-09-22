@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorSecondary"
+    tools:context=".ui.login.OnboardingFragment">
+
+
+    <Button
+        android:id="@+id/email_onboardBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:drawableLeft="@drawable/baseline_email_24"
+        android:text="Sign in with Email"
+        android:drawableTint="?colorOnPrimary"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/facebookBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sign in with Facebook"
+        android:textAlignment="textStart"
+        android:drawableLeft="@drawable/com_facebook_favicon_blue"
+
+        android:drawablePadding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_onboardBTN" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="222dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="Create an account to Save your progress"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/onboardIV" />
+
+    <ImageView
+        android:id="@+id/onboardIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/_toolbar_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/googleBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sign in with Google"
+        android:drawableLeft="@drawable/googleg_standard_color_18"
+        android:textAlignment="textStart"
+        android:drawablePadding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebookBTN" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="333dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:gravity="end"
+        android:text="@string/by_tapping_continue_you_agree_to_our_terms_and_acknowledge_that_you_have_read_our_privacy_policy"
+        app:layout_constraintEnd_toEndOf="@+id/googleBTN"
+        app:layout_constraintTop_toBottomOf="@+id/googleBTN" />
+
+    <TextView
+        android:id="@+id/loginTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/have_an_account_log_in"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

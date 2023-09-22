@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bogungym.data.model.Days
+import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.ListItemExerciseBinding
 import com.example.bogungym.ui.ExercisesViewModel
@@ -27,14 +28,19 @@ class DaysAdapter(
         return ItemViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
+
+        holder.binding.targetTV.text = "DAY"
+
 
 
 
     }
 
     override fun getItemCount(): Int {
+
         return dataset.size
     }
 }

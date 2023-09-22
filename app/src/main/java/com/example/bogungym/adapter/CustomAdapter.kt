@@ -41,9 +41,6 @@ class CustomAdapter (
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.binding.targetTV.text = item.name
-
-        holder.binding.momaTV.text = item.days.toString() + " days Training"
-
         holder.binding.imageView4.setOnClickListener {
             viewModel.deleteWorkout(item)
         }

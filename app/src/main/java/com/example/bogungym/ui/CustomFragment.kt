@@ -8,17 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
-import com.example.bogungym.R
 import com.example.bogungym.adapter.CustomAdapter
-import com.example.bogungym.adapter.ExercisesAdapter
-import com.example.bogungym.adapter.GymAdapter
-import com.example.bogungym.data.Datasource
+import com.example.bogungym.data.model.Days
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.FragmentCustomBinding
-import com.example.bogungym.databinding.FragmentHomeBinding
+import java.lang.NumberFormatException
 
 class CustomFragment : Fragment() {
 
@@ -72,18 +66,31 @@ class CustomFragment : Fragment() {
 
 
 
-        fun inputCheck(name: String, number:String): Boolean {
-            return !(TextUtils.isEmpty(name) && TextUtils.isEmpty(number))
+        fun inputCheck(name: String, number: String): Boolean {
+            return !(TextUtils.isEmpty(name) && TextUtils.isEmpty(number) )
 
         }
 
 
         fun insertWorkoutToDatabase() {
-            val name = binding.myWorkET.text.toString()
-            val number = binding.numberET.text.toString()
+           val name = binding.myWorkET.text.toString()
+            val numberDays = binding.numberET.text.toString()
 
-            if (inputCheck(name, number)){
-                val workout = UserWorkout(0,name,number.toInt())
+
+//
+//
+//                val number = numberDays.toInt()
+//                val emptyListsDays = ArrayList<List<Days>>(number)
+//
+//                for (i in 0 until number){
+//
+//                    emptyListsDays.add(emptyList())
+//                }
+//
+
+            if (inputCheck(name,numberDays)){
+
+                val workout = UserWorkout(0,name,numberDays.toInt())
                 viewModel.insertWorkout(workout)
                 Toast.makeText(requireContext(),"Successfully added!", Toast.LENGTH_LONG).show()
             } else{
@@ -94,6 +101,23 @@ class CustomFragment : Fragment() {
 
         binding.saveBTN.setOnClickListener {
             insertWorkoutToDatabase()
+            val numberDays = binding.numberET.text.toString()
+
+            try {
+                val number = numberDays.toInt()
+                val emptyListsDays = ArrayList<List<Days>>(number)
+
+                for (i in 0 until number){
+
+                    emptyListsDays.add(emptyList())
+                }
+
+
+            } catch (e: NumberFormatException){
+
+                Toast.makeText(requireContext(), "Invalid input. Please enter a valid number.", Toast.LENGTH_LONG).show()
+            }
+
             binding.newWorkBTN.visibility = View.VISIBLE
             binding.customRV.visibility = View.VISIBLE
             binding.daysTV.visibility = View.GONE
