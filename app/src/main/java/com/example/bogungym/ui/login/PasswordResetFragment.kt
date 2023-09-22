@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bogungym.R
 import com.example.bogungym.databinding.FragmentPasswordResetBinding
 
-class PasswordResetFragment: Fragment() {
+class PasswordResetFragment : Fragment() {
 
     private lateinit var binding: FragmentPasswordResetBinding
     private val viewModel: FirebaseViewModel by activityViewModels()
@@ -34,9 +35,12 @@ class PasswordResetFragment: Fragment() {
         binding.btSendReset.setOnClickListener {
             val email: String = binding.tietEmail.text.toString()
             if (email != "") {
-//                viewModel.sendPasswordRecovery(email)
+                viewModel.sendPasswordRecovery(email)
             }
         }
+
+
+
 
     }
 }

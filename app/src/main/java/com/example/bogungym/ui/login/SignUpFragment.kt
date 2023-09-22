@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bogungym.R
@@ -34,8 +35,15 @@ class SignUpFragment : Fragment() {
             val email = binding.signUpEmail.text.toString()
             val password = binding.signUpPassword.text.toString()
 
-            viewModel.signUp(email, password)
+
+            if (email != "" && password != ""){
+                viewModel.signUp(email, password)
+            }
+
+
         }
+
+
 
         binding.goLoginTV.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -16,7 +17,6 @@ class LoginFragment : Fragment() {
 
     val viewModel: FirebaseViewModel by activityViewModels()
     private lateinit var binding: FragmentLoginBinding
-
 
 
     override fun onCreateView(
@@ -34,21 +34,26 @@ class LoginFragment : Fragment() {
             val email = binding.loginEmail.text.toString()
             val password = binding.loginPassword.text.toString()
 
-            viewModel.login(email, password)
-        }
+            if (email != "" && password != "") {
+                viewModel.login(email, password)
 
-        binding.goSignUpTV.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToPasswordResetFragment())
-        }
-
-
-
-        viewModel.user.observe(viewLifecycleOwner){
-            if(it != null){
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
             }
+
+            binding.goSignUpTV.setOnClickListener {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToPasswordResetFragment())
+            }
+
+
+
+            viewModel.user.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                }
+            }
+
+
+
         }
 
     }
-
 }
