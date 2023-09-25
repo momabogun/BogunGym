@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.example.bogungym.data.model.FirebaseProfile
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -78,6 +79,7 @@ class FirebaseViewModel : ViewModel() {
         firebaseAuth.signOut()
         _user.value = firebaseAuth.currentUser
     }
+
 
 
 

@@ -3,25 +3,33 @@ package com.example.bogungym
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
+
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+
 import androidx.navigation.ui.setupWithNavController
 import com.example.bogungym.databinding.ActivityMainBinding
-import com.example.bogungym.ui.HomeFragmentDirections
+import com.example.bogungym.ui.CustomFragment
 import com.example.bogungym.ui.login.FirebaseViewModel
+import com.example.bogungym.ui.login.ProfileFragment
+
+import com.google.android.material.navigation.NavigationView
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,17 +37,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
 
+
     private lateinit var navController: NavController
-
-//
-//    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
-//
-//    private lateinit var drawableLayout: DrawerLayout
-
-
+    private lateinit var hamNavigationView: NavigationView
+    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+    private lateinit var drawableLayout: DrawerLayout
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setTheme(R.style.Theme_Bogun)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -47,16 +54,29 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        drawableLayout = findViewById(R.id.drawerLayout)
-//
-//
-//
-//
-//        actionBarDrawerToggle= ActionBarDrawerToggle(this,drawableLayout,binding.myToolbar,R.string.open,R.string.close)
-//        actionBarDrawerToggle.isDrawerIndicatorEnabled = true
-//
-//        drawableLayout.addDrawerListener(actionBarDrawerToggle)
-//        actionBarDrawerToggle.syncState()
+        drawableLayout = binding.drawableLayout
+        hamNavigationView = binding.hamburgerNav
+        actionBarDrawerToggle =
+            ActionBarDrawerToggle(
+                this,
+                drawableLayout,
+                binding.myToolbar,
+                R.string.open,
+                R.string.close
+            )
+        drawableLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        hamNavigationView.setNavigationItemSelectedListener() {
+            when (it.itemId) {
+                R.id.profileFragment -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.profileFragment)
+                R.id.customFragment2 -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.customFragment2)
+                R.id.settingsFragment -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.settingsFragment)
+
+            }
+
+            return@setNavigationItemSelectedListener false
+        }
 
 
         val navHostFragment: NavHostFragment =
@@ -70,9 +90,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
 
-
-            binding.titleTV.text = destination.label
-            if(destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
+            if (destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
                 binding.bottomNavBMV.visibility = View.GONE
                 binding.appBarLayout.visibility = View.GONE
             } else {
@@ -80,26 +98,25 @@ class MainActivity : AppCompatActivity() {
                 binding.appBarLayout.visibility = View.VISIBLE
             }
 
-            if(destination.id == R.id.homeFragment) {
+            if (destination.id == R.id.homeFragment) {
+
+
+
                 val isNightMode =
                     AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
 
-                if (isNightMode){
+                if (isNightMode) {
                     binding.logoIVDark.visibility = View.VISIBLE
                     binding.logoIVLight.visibility = View.GONE
-                } else{
+                } else {
                     binding.logoIVLight.visibility = View.VISIBLE
                     binding.logoIVDark.visibility = View.GONE
                 }
                 binding.profileIV.visibility = View.VISIBLE
-                binding.hamburgerMenu.visibility = View.VISIBLE
-                binding.backIcon.visibility = View.GONE
-                binding.titleTV.visibility = View.GONE
+
             } else {
                 binding.profileIV.visibility = View.GONE
-                binding.hamburgerMenu.visibility = View.GONE
-                binding.backIcon.visibility = View.VISIBLE
-                binding.titleTV.visibility = View.VISIBLE
+
                 binding.logoIVDark.visibility = View.GONE
                 binding.logoIVLight.visibility = View.GONE
             }
@@ -116,9 +133,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        binding.backIcon.setOnClickListener {
-            onSupportNavigateUp()
-        }
+
+
+
+
+
+
+
 
 
 
@@ -150,10 +171,18 @@ class MainActivity : AppCompatActivity() {
 
 
         })
+
+        setSupportActionBar(binding.myToolbar)
+        hamNavigationView.setupWithNavController(navController)
+
+        appBarConfiguration = AppBarConfiguration(navController.graph, drawableLayout)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
     }
 
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        val navController = findNavController(R.id.navHostFragmentFCV)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/customFragment2"
+        android:icon="@drawable/baseline_event_note_24"
+        android:title="Create Plan"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/baseline_person_24"
+        android:title="Edit Profile" />
+
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="Settings" />
 
     <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="Create Plan" />
-    <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:title="Edit Profile" />
-    <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_info_24"
         android:title="About Us" />
     <item
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/onboardingFragment"
+        android:icon="@drawable/baseline_logout_24"
         android:title="Logout" />
+    </group>
 </menu>

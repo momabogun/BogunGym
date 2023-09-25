@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?colorSecondary"
+    android:background="#f0f0f0"
     tools:context=".ui.login.OnboardingFragment">
 
 
@@ -16,8 +16,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:drawableLeft="@drawable/baseline_email_24"
+        android:textColor="@color/white"
         android:text="Sign in with Email"
-        android:drawableTint="?colorOnPrimary"
+        android:drawableTint="@color/white"
+
+        android:backgroundTint="#00897B"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,11 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textColor="@color/white"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Sign in with Facebook"
         android:textAlignment="textStart"
         android:drawableLeft="@drawable/com_facebook_favicon_blue"
+        android:backgroundTint="#00897B"
 
         android:drawablePadding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +52,7 @@
         android:gravity="center"
         android:text="Create an account to Save your progress"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,10 +75,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
         android:text="Sign in with Google"
         android:drawableLeft="@drawable/googleg_standard_color_18"
         android:textAlignment="textStart"
         android:drawablePadding="8dp"
+        android:backgroundTint="#00897B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/facebookBTN" />
@@ -82,6 +90,7 @@
         android:layout_width="333dp"
         android:layout_height="63dp"
         android:layout_marginTop="16dp"
+        android:textColor="@color/black"
         android:gravity="end"
         android:text="@string/by_tapping_continue_you_agree_to_our_terms_and_acknowledge_that_you_have_read_our_privacy_policy"
         app:layout_constraintEnd_toEndOf="@+id/googleBTN"
@@ -95,6 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />

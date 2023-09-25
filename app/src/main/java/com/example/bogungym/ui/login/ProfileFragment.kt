@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
+import kotlin.math.pow
 
 
 class ProfileFragment : Fragment() {
@@ -52,7 +53,35 @@ class ProfileFragment : Fragment() {
 
 
         user = viewModel.user.value!!
+
+
+
     }
+
+
+    private fun calculateBMI(){
+        val weight = binding.editTextInputWeight.text.toString().toFloatOrNull()
+        val height = binding.editTextInputHeight.text.toString().toFloatOrNull()
+
+
+        if (weight != null && height != null ){
+            val bmi = weight/(height/100).pow(2)
+            val bmiResult = String.format("%.2f", bmi)
+
+
+            val bmiCategory = when {
+                bmi < 18.5 -> "Underweight"
+                bmi < 25 -> "Normal weight"
+                bmi < 30 -> "Overweight"
+                else -> "Obese"
+            }
+            binding.bmiTV.text = "BMI: $bmiResult\nCategory: $bmiCategory"
+        } else{
+            binding.bmiTV.text = "BMI: Invalid Input"
+        }
+    }
+
+
 
 
 
@@ -69,6 +98,10 @@ class ProfileFragment : Fragment() {
 
         binding.logOutBTN.setOnClickListener {
             viewModel.signOut()
+        }
+
+        binding.bmiTV.setOnClickListener {
+            calculateBMI()
         }
 
         binding.editProfile.setOnClickListener {
@@ -103,6 +136,7 @@ class ProfileFragment : Fragment() {
 
 
         binding.editBTN.setOnClickListener {
+
             val firstName = binding.editTextInputName.text.toString()
             val age = binding.editTextInputAge.text.toString().toInt()
             val height = binding.editTextInputHeight.text.toString().toInt()
@@ -111,6 +145,8 @@ class ProfileFragment : Fragment() {
 
             findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToHomeFragment())
         }
+
+
 
 
 
@@ -146,23 +182,6 @@ class ProfileFragment : Fragment() {
         binding.emailProfileTV.text = user.email
 
 
-
-
-
-
-
-            val isNightMode =
-                AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
-            binding.darkSW.isChecked = isNightMode
-
-            binding.darkSW.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                }
-                activity?.let { ActivityCompat.recreate(it) }
-            }
 
 
 

@@ -41,6 +41,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+
+
         viewModel.user.observe(viewLifecycleOwner){
             if (it == null){
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToOnboardingFragment())

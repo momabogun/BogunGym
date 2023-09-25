@@ -18,7 +18,19 @@ class SupplementsFragment : Fragment() {
 
 
 
+
+
     private lateinit var binding: FragmentSupplementsBinding
+
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,9 +39,17 @@ class SupplementsFragment : Fragment() {
     ): View {
         binding = FragmentSupplementsBinding.inflate(inflater, container, false)
         return binding.root
+
+
     }
 
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+
 
         val supplements = Datasource().loadSupplements()
 
@@ -43,4 +63,6 @@ class SupplementsFragment : Fragment() {
 
 
     }
+
+
 }

@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="Weight" />
+            android:hint="Weight in Kg" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="Height" />
+            android:hint="Height in Cm" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -110,29 +110,32 @@
 
     <TextView
         android:id="@+id/email_profileTV"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/round_shape"
         android:ems="10"
+        android:gravity="center"
         android:text="Email"
         android:textColor="?colorOnPrimary"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
-        android:id="@+id/darkSW"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/bmiTV"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:checked="false"
-        android:text="Dark Mode"
-        app:layout_constraintBottom_toTopOf="@+id/logOutBTN"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_shape"
+        android:ems="10"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Press to Calculate BMI"
+        android:textColor="?colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_age" />
 
     <Button
@@ -156,6 +159,17 @@
         android:src="@drawable/baseline_edit_24"
         app:layout_constraintBottom_toTopOf="@+id/edit_tilName"
         app:layout_constraintStart_toEndOf="@+id/profilePicIV"
+        app:tint="?colorPrimary" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="46dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/baseline_settings_24"
+        app:layout_constraintBottom_toBottomOf="@+id/email_profileTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/email_profileTV"
         app:tint="?colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

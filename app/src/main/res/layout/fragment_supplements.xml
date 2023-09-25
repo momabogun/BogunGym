@@ -14,9 +14,8 @@
         android:iconifiedByDefault="false"
         android:queryHint="Search"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rounded_corners"
+        android:background="@drawable/person_shape"
         app:layout_constraintStart_toStartOf="parent"
-
         android:animationCache="true"
         app:layout_constraintTop_toTopOf="parent">
 
