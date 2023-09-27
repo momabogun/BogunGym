@@ -1,6 +1,7 @@
 package com.example.bogungym.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -14,8 +15,7 @@ import com.example.bogungym.ui.ExercisesViewModel
 import com.example.bogungym.ui.HomeFragmentDirections
 
 class CustomAdapter (
-    private var dataset: List<UserWorkout>,
-    private val viewModel: ExercisesViewModel
+    private var dataset: List<UserWorkout>
 ) : RecyclerView.Adapter<CustomAdapter.ItemViewHolder>() {
 
 
@@ -41,11 +41,6 @@ class CustomAdapter (
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.binding.targetTV.text = item.name
-        holder.binding.imageView4.setOnClickListener {
-            viewModel.deleteWorkout(item)
-        }
-
-
 
 
     }

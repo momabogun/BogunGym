@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="?colorSecondary"
     android:fontFamily="@font/roboto_regular"
-    tools:context=".ui.HomeFragment">
+    tools:context=".ui.ExerciseFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exerciseRV"

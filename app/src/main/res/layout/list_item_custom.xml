@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="?colorPrimaryVariant">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewExer"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:elevation="12dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="1.9"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/exerIV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/new_contact" />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/exerTV"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textColor="?colorOnPrimary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/cardViewExer"
+            app:layout_constraintTop_toBottomOf="@+id/equipTV" />
+
+        <TextView
+            android:id="@+id/equipTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="sdsadasdadsa"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintStart_toEndOf="@+id/cardViewExer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/chooseBTN"
+            android:layout_width="51dp"
+            android:layout_height="43dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_circle_24"
+            app:tint="?colorOnPrimary" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="35dp"
+            android:layout_height="36dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/chooseBTN"
+            app:layout_constraintEnd_toEndOf="@+id/chooseBTN"
+            app:layout_constraintStart_toStartOf="@+id/chooseBTN"
+            app:layout_constraintTop_toTopOf="@+id/chooseBTN"
+            app:srcCompat="@drawable/baseline_circle_24_full" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,5 +1,6 @@
 package com.example.bogungym.ui.login
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -15,6 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
+import com.example.bogungym.R
 import com.example.bogungym.data.model.FirebaseProfile
 import com.example.bogungym.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseUser
@@ -59,6 +61,7 @@ class ProfileFragment : Fragment() {
     }
 
 
+    @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
     private fun calculateBMI(){
         val weight = binding.editTextInputWeight.text.toString().toFloatOrNull()
         val height = binding.editTextInputHeight.text.toString().toFloatOrNull()
@@ -68,6 +71,9 @@ class ProfileFragment : Fragment() {
             val bmi = weight/(height/100).pow(2)
             val bmiResult = String.format("%.2f", bmi)
 
+            val drawableOverweight = resources.getDrawable(R.drawable.round_doctor,null)
+            val drawableNormal = resources.getDrawable(R.drawable.round,null)
+            val drawableBad = resources.getDrawable(R.drawable.round_obese,null)
 
             val bmiCategory = when {
                 bmi < 18.5 -> "Underweight"
@@ -112,6 +118,10 @@ class ProfileFragment : Fragment() {
             if (it == null){
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOnboardingFragment())
             }
+        }
+
+        binding.settingsBTN.setOnClickListener {
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToSettingsFragment())
         }
 
 //        binding.editBTN.setOnClickListener {
@@ -167,17 +177,6 @@ class ProfileFragment : Fragment() {
             }
         }
 
-//        viewModel.profileRef.addSnapshotListener { value, error ->
-//
-//            value?.let {
-//                val p = it.toObject<FirebaseProfile>()
-//                binding.editTextInputName.setText(p?.name)
-//                binding.editTextInputAge.setText(p?.age.toString())
-//                binding.editTextInputHeight.setText(p?.height.toString())
-//                binding.editTextInputWeight.setText(p?.weight.toString())
-//            }
-//
-//        }
 
         binding.emailProfileTV.text = user.email
 

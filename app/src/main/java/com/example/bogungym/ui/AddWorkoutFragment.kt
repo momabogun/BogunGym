@@ -5,34 +5,45 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.bogungym.R
+import com.example.bogungym.adapter.AddWorkoutAdapter
+import com.example.bogungym.adapter.CustomAdapter
+import com.example.bogungym.adapter.GymAdapter
+import com.example.bogungym.data.Datasource
+import com.example.bogungym.databinding.FragmentAddWorkoutBinding
+import com.example.bogungym.databinding.FragmentCustomBinding
 
 class AddWorkoutFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private val viewModel: ExercisesViewModel by activityViewModels()
 
-    }
+
+    private lateinit var binding: FragmentAddWorkoutBinding
+
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_workout, container, false)
+    ): View {
+        binding = FragmentAddWorkoutBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddWorkoutFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val bodyParts = Datasource().loadBodyParts()
+
+
+        val recyclerView = binding.addWorkoutRV
+
+        recyclerView.adapter = AddWorkoutAdapter(bodyParts)
+
 
     }
+
+
+
+
 }

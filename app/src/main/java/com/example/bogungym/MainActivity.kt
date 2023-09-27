@@ -125,34 +125,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         binding.profileIV.setOnClickListener {
             val navController = findNavController(R.id.navHostFragmentFCV)
             navController.navigate(R.id.profileFragment)
         }
-
-
-
-
 
 
         binding.bottomNavBMV.setOnItemSelectedListener { item ->

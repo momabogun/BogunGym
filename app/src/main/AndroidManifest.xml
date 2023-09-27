@@ -6,6 +6,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:logo="@drawable/screenshot_2023_05_09_at_19_06_59"
         android:allowBackup="true"

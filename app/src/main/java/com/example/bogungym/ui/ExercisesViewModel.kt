@@ -3,6 +3,7 @@ package com.example.bogungym.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.bogungym.data.AppRepository
 import com.example.bogungym.data.db.getDatabase
@@ -21,26 +22,16 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
 
     val exercises = repository.exercisesList
 
-    val workouts = repository.workoutList
-
-
-    fun insertWorkout(workout:UserWorkout){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addWorkout(workout)
-        }
-    }
-
-    fun deleteWorkout(workout: UserWorkout){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteWorkout(workout)
-        }
-    }
 
 
     fun getExercises(target: String): LiveData<List<Exercises>> = repository.getExerciseByMuscle(target)
 
 
     fun getExerciseByID(id: String): LiveData<Exercises> = repository.getExerciseByID(id)
+
+
+
+
 
     init {
         loadExercises()
@@ -53,6 +44,17 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
             repository.getExercises()
         }
     }
+
+
+    fun updatePick(liked: Int, id: String) {
+       viewModelScope.launch(Dispatchers.IO) {
+            repository.updatePick(liked, id)
+       }
+   }
+
+
+
+
 }
 
 

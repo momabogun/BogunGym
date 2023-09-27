@@ -1,23 +1,21 @@
 package com.example.bogungym.adapter
-
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bogungym.data.model.Days
-import com.example.bogungym.data.model.Exercises
-import com.example.bogungym.data.model.UserWorkout
+import com.example.bogungym.data.model.BodyPart
 import com.example.bogungym.databinding.ListItemExerciseBinding
-import com.example.bogungym.ui.ExercisesViewModel
+import com.example.bogungym.ui.AddWorkoutFragmentDirections
+import java.util.Locale
 
-class DaysAdapter(
-    private var dataset: List<Days>,
-    private val viewModel: ExercisesViewModel
-) : RecyclerView.Adapter<DaysAdapter.ItemViewHolder>() {
+class AddWorkoutAdapter(
+    private var dataset: List<BodyPart>,
+) : RecyclerView.Adapter<AddWorkoutAdapter.ItemViewHolder>() {
 
 
     inner class ItemViewHolder(val binding: ListItemExerciseBinding) :
         RecyclerView.ViewHolder(binding.root)
+
 
 
 
@@ -28,12 +26,18 @@ class DaysAdapter(
         return ItemViewHolder(binding)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
 
-        holder.binding.targetTV.text = "DAY"
-
+        holder.binding.targetTV.text = item.part.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.ROOT
+            ) else it.toString()
+        }
+        holder.itemView.setOnClickListener {
+            val navController = holder.itemView.findNavController()
+            navController.navigate(AddWorkoutFragmentDirections.actionAddWorkoutFragmentToChoosingFragment(item.part))
+        }
 
 
 

@@ -6,14 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".ui.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/unitsMess"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/round_shape"
+        android:textColor="?colorOnPrimary"
+        android:gravity="left"
+        android:paddingStart="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:drawableLeft="@drawable/baseline_architecture_24"
+        android:drawablePadding="20dp"
+        android:drawableTint="?colorOnPrimary"
+        android:text="Units of measurement"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deleteAcc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/round_shape"
+        android:drawableLeft="@drawable/baseline_delete_forever_24"
+        android:drawablePadding="20dp"
+        android:drawableTint="?colorOnPrimary"
+        android:gravity="left"
+        android:paddingStart="20dp"
+        android:text="Delete Account"
+        android:textColor="?colorOnPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutUs" />
+
+    <TextView
+        android:id="@+id/darkMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/round_shape"
+        android:textColor="?colorOnPrimary"
+        android:gravity="left"
+        android:drawableLeft="@drawable/baseline_dark_mode_24"
+        android:drawablePadding="20dp"
+        android:drawableTint="?colorOnPrimary"
+        android:paddingStart="20dp"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="Dark Mode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/unitsMess"/>
+
+    <TextView
+        android:id="@+id/helpCentre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/round_shape"
+        android:textColor="?colorOnPrimary"
+        android:drawableLeft="@drawable/baseline_help_24"
+        android:drawablePadding="20dp"
+        android:drawableTint="?colorOnPrimary"
+        android:textSize="20sp"
+        android:gravity="left"
+        android:paddingStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="Help Centre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/darkMode" />
+
+    <TextView
+        android:id="@+id/aboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/round_shape"
+        android:drawableLeft="@drawable/baseline_info_24"
+        android:drawablePadding="20dp"
+        android:drawableTint="?colorOnPrimary"
+        android:textSize="20sp"
+        android:gravity="left"
+        android:paddingStart="20dp"
+        android:text="About Us"
+        android:textColor="?colorOnPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/helpCentre" />
+
+    <Switch
+        android:id="@+id/darkModeSW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/darkMode"
+        app:layout_constraintEnd_toEndOf="@+id/darkMode"
+        app:layout_constraintTop_toTopOf="@+id/darkMode" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

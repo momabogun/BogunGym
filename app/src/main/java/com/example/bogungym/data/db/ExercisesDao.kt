@@ -16,27 +16,25 @@ interface ExercisesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(exercises: List<Exercises>)
 
-    @Query("SELECT * FROM exercises")
+    @Query("SELECT * FROM exercise_table")
     fun getAllExercises(): LiveData<List<Exercises>>
 
-    @Query("SELECT * FROM exercises WHERE target = :muscle")
+    @Query("SELECT * FROM exercise_table WHERE target = :muscle")
     fun getExerciseByMuscle(muscle: String): LiveData<List<Exercises>>
 
-    @Query("SELECT * FROM exercises WHERE id = :id")
+    @Query("SELECT * FROM exercise_table WHERE id = :id")
     fun getExerciseByID(id: String): LiveData<Exercises>
 
+    @Query ("SELECT COUNT(*) FROM exercise_table")
+    suspend fun count(): Int
 
-    @Query("DELETE FROM user_workout WHERE id = :id")
-    suspend fun deleteWorkout(id: Long)
+    @Query("UPDATE exercise_table SET userPick = :picked WHERE id = :id")
+    fun updateUserPicks(picked: Int,id: String)
+
+    @Query("SELECT * FROM exercise_table WHERE userPick = 1")
+    fun getUserPicked(): LiveData<List<Exercises>>
 
 
-
-    @Query("SELECT * FROM user_workout")
-    fun getAllWorkouts(): LiveData<List<UserWorkout>>
-
-
-    @Insert
-    fun insertWorkout(workout: UserWorkout)
 
 
 

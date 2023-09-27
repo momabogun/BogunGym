@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "479279906166",
+    "firebase_url": "https://bogun-gym-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "bogun-gym",
+    "storage_bucket": "bogun-gym.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479279906166:android:99235ba6548528c9b80e57",
+        "android_client_info": {
+          "package_name": "com.example.bogungym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479279906166-96qro3oruun4dll5b4b7cob4lt01n1n1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bogungym",
+            "certificate_hash": "e8671a9d41af73ef5f4c545e37d02d2136bb6cf3"
+          }
+        },
+        {
+          "client_id": "479279906166-httc70cg2gcr2frgkqhntstg4kq8g1gd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYQjhZaFgR0MKSKeUue2UWHzQQ_RkDA14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479279906166-httc70cg2gcr2frgkqhntstg4kq8g1gd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -31,13 +31,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ExercisesApiService {
-
-
-
     @GET("exercises")
     suspend fun getExercises(): List<Exercises>
-
-
 
 }
 
