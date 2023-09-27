@@ -33,7 +33,6 @@ class FirebaseViewModel : ViewModel() {
         get() = _user
 
 
-    var workouts: MutableLiveData<List<UserWorkout>> = MutableLiveData<List<UserWorkout>>()
 
 
     lateinit var profileRef: DocumentReference
@@ -48,6 +47,24 @@ class FirebaseViewModel : ViewModel() {
     }
 
 
+    private val getWorkoutDocumentReference =
+        fireStore
+            .collection("Profile")
+            .document(firebaseAuth.currentUser?.uid!!)
+            .collection("workouts")
+            .document()
+
+
+    fun getWorkoutDoc(workoutIdentifier: String):DocumentReference{
+        return fireStore.collection("Profile").document(firebaseAuth.currentUser?.uid!!)
+            .collection("workouts")
+            .document(workoutIdentifier)
+    }
+
+
+    val documentId: String = getWorkoutDocumentReference.id
+
+
     fun getWorkoutsReference(): CollectionReference {
         return fireStore
             .collection("Profile")
@@ -55,21 +72,46 @@ class FirebaseViewModel : ViewModel() {
             .collection("workouts")
     }
 
-    fun addWorkoutToUser(workout: UserWorkout) {
+    fun addWorkoutToUser(workout: UserWorkout): String{
+        var documentId = ""
         fireStore
             .collection("Profile")
             .document(firebaseAuth.currentUser?.uid!!)
             .collection("workouts")
             .add(workout)
+            .addOnSuccessListener {
+                    documentReference ->
+                // Document added with a generated ID
+                documentId = documentReference.id
+            }
+            .addOnFailureListener { e ->
 
+            }
+
+        return documentId
+
+
+
+
+    }
+
+
+
+    fun getExercisesFromWorkoutReference(workoutIdentifier: String): CollectionReference {
+        return fireStore
+            .collection("Profile")
+            .document(firebaseAuth.currentUser?.uid!!)
+            .collection("workouts")
+            .document(workoutIdentifier)
+            .collection("exercises")
     }
 
 
     fun addExercisesToWorkout(exercise: Exercises, workoutIdentifier: String) {
         fireStore
+            .collection("Profile")
+            .document(firebaseAuth.currentUser?.uid!!)
             .collection("workouts")
-            .document()
-            .collection("userWorkouts")
             .document(workoutIdentifier)
             .collection("exercises")
             .add(exercise)

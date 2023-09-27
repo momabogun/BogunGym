@@ -49,9 +49,9 @@
         <action
             android:id="@+id/action_customFragment2_to_addWorkoutFragment"
             app:destination="@id/addWorkoutFragment" />
-        <argument
-            android:name="workoutIdentifier"
-            app:argType="string" />
+        <action
+            android:id="@+id/action_customFragment2_to_myWorkoutFragment"
+            app:destination="@id/myWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/supplementsFragment"
@@ -157,6 +157,21 @@
         tools:layout="@layout/fragment_choosing" >
         <argument
             android:name="target"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_choosingFragment_to_myWorkoutFragment"
+            app:destination="@id/myWorkoutFragment" />
+        <argument
+            android:name="workoutIdentifier"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/myWorkoutFragment"
+        android:name="com.example.bogungym.ui.MyWorkoutFragment"
+        android:label="fragment_my_workout"
+        tools:layout="@layout/fragment_my_workout" >
+        <argument
+            android:name="workoutIdentifier"
             app:argType="string" />
     </fragment>
 </navigation>

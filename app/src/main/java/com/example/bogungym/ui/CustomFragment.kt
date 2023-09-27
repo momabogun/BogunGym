@@ -73,9 +73,11 @@ class CustomFragment : Fragment() {
 
         binding.saveBTN.setOnClickListener {
             val name = binding.myWorkET.text.toString()
-            val workout = UserWorkout(name)
+            val id = fireViewModel.documentId
+            val workout = UserWorkout(name, id)
             fireViewModel.addWorkoutToUser(workout)
             binding.myWorkET.setText("Custom Workout")
+
             findNavController().navigate(CustomFragmentDirections.actionCustomFragment2ToAddWorkoutFragment())
 
         }
@@ -95,6 +97,9 @@ class CustomFragment : Fragment() {
                     }
 
                 }
+
+
+        collectionReference.document()
 
 
 
