@@ -61,16 +61,27 @@ class WorkoutSaveFragment : Fragment() {
 //
 //            viewModel.insertWorkout(UserWorkout(0,name,list))
 //        }
-//
-//
-//        binding.saveBTN.setOnClickListener {
-//            insertWorkout()
-//            findNavController().navigate(WorkoutSaveFragmentDirections.actionWorkoutSaveFragmentToHomeFragment())
-//        }
-//
-//        binding.cancelBTN.setOnClickListener {
-//            findNavController().navigate(WorkoutSaveFragmentDirections.actionWorkoutSaveFragmentToHomeFragment())
-//        }
+
+
+
+
+       binding.saveBTN.setOnClickListener {
+           val name = binding.myWorkET.text.toString()
+           val workout = UserWorkout(name)
+           viewModel.addWorkout(workout,name)
+           findNavController().navigate(WorkoutSaveFragmentDirections.actionWorkoutSaveFragmentToAddWorkoutFragment())
+        }
+
+
+
+
+
+
+
+
+       binding.cancelBTN.setOnClickListener {
+            findNavController().navigateUp()
+       }
 
 
 

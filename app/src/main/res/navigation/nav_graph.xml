@@ -47,8 +47,11 @@
         android:label="Custom Workout"
         tools:layout="@layout/fragment_custom" >
         <action
-            android:id="@+id/action_customFragment2_to_addWorkoutFragment"
-            app:destination="@id/addWorkoutFragment" />
+            android:id="@+id/action_customFragment2_to_workoutSaveFragment"
+            app:destination="@id/workoutSaveFragment" />
+        <action
+            android:id="@+id/action_customFragment2_to_myWorkoutFragment"
+            app:destination="@id/myWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/supplementsFragment"
@@ -166,10 +169,18 @@
         android:id="@+id/myWorkoutFragment"
         android:name="com.example.bogungym.ui.MyWorkoutFragment"
         android:label="fragment_my_workout"
-        tools:layout="@layout/fragment_my_workout" />
+        tools:layout="@layout/fragment_my_workout" >
+        <argument
+            android:name="workoutIdentifier"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/workoutSaveFragment"
         android:name="com.example.bogungym.ui.WorkoutSaveFragment"
         android:label="fragment_workout_save"
-        tools:layout="@layout/fragment_workout_save" />
+        tools:layout="@layout/fragment_workout_save" >
+        <action
+            android:id="@+id/action_workoutSaveFragment_to_addWorkoutFragment"
+            app:destination="@id/addWorkoutFragment" />
+    </fragment>
 </navigation>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.data.model.BodyPart
 import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.UserWorkout
@@ -16,7 +17,8 @@ import com.example.bogungym.ui.CustomFragmentDirections
 import com.example.bogungym.ui.HomeFragmentDirections
 
 class CustomAdapter (
-    private var dataset: List<UserWorkout>
+    private var dataset: List<UserWorkout>,
+    val viewModel: ExercisesViewModel
 ) : RecyclerView.Adapter<CustomAdapter.ItemViewHolder>() {
 
 
@@ -47,7 +49,9 @@ class CustomAdapter (
 
 
         holder.itemView.setOnClickListener {
+            viewModel.updateAllFalse()
             val navController = holder.itemView.findNavController()
+            navController.navigate(CustomFragmentDirections.actionCustomFragment2ToMyWorkoutFragment(workoutIdentifier = item.name))
         }
 
 

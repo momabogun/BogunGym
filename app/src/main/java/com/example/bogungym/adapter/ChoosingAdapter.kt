@@ -61,6 +61,9 @@ class ChoosingAdapter(
             .load(imgUri)
             .into(holder.binding.exerIV)
         holder.binding.chooseBTN.setImageResource(R.drawable.baseline_circle_24)
+
+
+
         if (item.userPick) {
             holder.binding.imageView3.visibility = View.VISIBLE
         } else {

@@ -23,7 +23,8 @@ class AddWorkoutFragment : Fragment() {
 
     private lateinit var binding: FragmentAddWorkoutBinding
 
-    private var wID: Long = 0
+
+    private var name: String = ""
 
 
 
@@ -32,11 +33,6 @@ class AddWorkoutFragment : Fragment() {
 
 
 
-
-        arguments?.let { it ->
-            wID = it.getLong("wID")
-
-        }
     }
 
 

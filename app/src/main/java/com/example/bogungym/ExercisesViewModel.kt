@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuthRegistrar
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -40,9 +41,10 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     val exercises = repository.exercisesList
 
 
-    fun getAllPicked(): LiveData<List<Exercises>> {
-        return repository.getAllPicked()
-    }
+    val pickedExercises = repository.pickedList
+
+
+
 
 
     fun getExercises(target: String): LiveData<List<Exercises>> =
@@ -71,23 +73,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-//WORKOUTS
 
-
-//    val workouts = repository.workoutList
-//
-//    fun deleteWorkout(workout: UserWorkout) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.deleteWorkout(workout)
-//        }
-//    }
-//
-//
-//    fun insertWorkout(workout: UserWorkout) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.addWorkout(workout)
-//        }
-//    }
 
 
     //FIREBASE
@@ -101,6 +87,10 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     private var _user = MutableLiveData<FirebaseUser?>(firebaseAuth.currentUser)
     val user: LiveData<FirebaseUser?>
         get() = _user
+
+
+
+
 
     lateinit var profileRef: DocumentReference
 
@@ -120,6 +110,30 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
         profileRef = fireStore.collection("Profile").document(firebaseAuth.currentUser?.uid!!)
 
     }
+
+    var workoutName:String = ""
+
+
+    fun addWorkout(workout: UserWorkout, name: String) {
+        workoutName = name
+        val workoutReference =
+            fireStore
+                .collection("Profile")
+                .document(firebaseAuth.currentUser?.uid!!)
+                .collection("workouts").document(name)
+        workoutReference.set(workout)
+
+
+    }
+    fun getWorkoutsReference(): CollectionReference {
+        return fireStore
+            .collection("Profile")
+            .document(firebaseAuth.currentUser?.uid!!)
+            .collection("workouts")
+    }
+
+
+
 
     fun signUp(email: String, password: String) {
 
@@ -189,17 +203,51 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
         profileRef.set(profile)
     }
 
-    private val listOfExercises = mutableListOf<String>()
+    val listOfExercises = mutableListOf<String>()
+
+
+    fun updateAllFalse(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateAllFalse()
+        }
+
+        listOfExercises.clear()
+
+    }
+
+
 
 
     fun signOut() {
-
-        for (exercise in listOfExercises) {
-            updatePick(false, exercise)
-        }
+        updateAllFalse()
         firebaseAuth.signOut()
-        listOfExercises.clear()
         _user.value = firebaseAuth.currentUser
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    fun findExercisesInWorkout(name: String){
+        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid).collection("workouts").document(name)
+            .get().addOnSuccessListener {
+                val workout = it.toObject(UserWorkout::class.java)
+                if (workout?.exercisesPicked != null) {
+                    for (exercise in workout.exercisesPicked) {
+                        updatePick(true, exercise)
+                    }
+                }
+            }
     }
 
 
@@ -222,42 +270,38 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
                     if (firebaseAuth.currentUser!!.isEmailVerified) {
                         setupUserEnv()
 
-                        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
-                            .get().addOnSuccessListener {
-                                val firebaseProfile = it.toObject(FirebaseProfile::class.java)
-                                if (firebaseProfile?.exercisesPicked != null) {
-                                    for (exercise in firebaseProfile.exercisesPicked) {
-                                        addPickedExercise(exercise)
-                                        updatePick(true, exercise)
-                                    }
-                                }
-                            }
-                    }
-                } else {
-
-
-                    if (loginResult.exception is FirebaseAuthInvalidUserException) {
-                        Toast.makeText(
-                            getApplication(),
-                            "Email not registrated.Please verify your Email!",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else if (loginResult.exception is FirebaseAuthInvalidCredentialsException) {
-                        Toast.makeText(
-                            getApplication(),
-                            "Wrong Password. Please try again!",
-                            Toast.LENGTH_LONG
-                        ).show()
                     } else {
-                        Toast.makeText(
-                            getApplication(),
-                            "Fehler bei der Anmeldung. Bitte versuchen Sie es erneut.",
-                            Toast.LENGTH_LONG
-                        ).show()
 
+
+                        when (loginResult.exception) {
+                            is FirebaseAuthInvalidUserException -> {
+                                Toast.makeText(
+                                    getApplication(),
+                                    "Email not registrated.Please verify your Email!",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+
+                            is FirebaseAuthInvalidCredentialsException -> {
+                                Toast.makeText(
+                                    getApplication(),
+                                    "Wrong Password. Please try again!",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+
+                            else -> {
+                                Toast.makeText(
+                                    getApplication(),
+                                    "Fehler bei der Anmeldung. Bitte versuchen Sie es erneut.",
+                                    Toast.LENGTH_LONG
+                                ).show()
+
+                            }
+                        }
                     }
-                }
 
+                }
             }
     }
 
@@ -285,15 +329,17 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
+
+
     fun addPickedExercise(id: String) {
         listOfExercises.add(id)
-        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
+        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid).collection("workouts").document(workoutName)
             .update("exercisesPicked", listOfExercises)
     }
 
     fun removePickedExercise(id: String) {
         listOfExercises.remove(id)
-        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
+        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid).collection("workouts").document(workoutName)
             .update("exercisesPicked", listOfExercises)
     }
 

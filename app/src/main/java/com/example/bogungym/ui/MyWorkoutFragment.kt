@@ -11,6 +11,7 @@ import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.adapter.MyWorkoutAdapter
 import com.example.bogungym.data.model.Exercises
+import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.FragmentExerciseBinding
 import com.example.bogungym.databinding.FragmentMyWorkoutBinding
 import com.google.firebase.auth.FirebaseUser
@@ -24,11 +25,23 @@ class MyWorkoutFragment : Fragment() {
     private lateinit var binding: FragmentMyWorkoutBinding
 
 
+    private lateinit var workoutIdentifier: String
+
+    private lateinit var workoutDocumentReference: DocumentReference
+
+
     private lateinit var user: FirebaseUser
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            workoutIdentifier = it.getString("workoutIdentifier", "")
+
+
+        }
+
+
 
 
     }
@@ -44,12 +57,18 @@ class MyWorkoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = MyWorkoutAdapter(emptyList(),viewModel,this)
+
+
+        viewModel.findExercisesInWorkout(workoutIdentifier)
+
+
+
+
+        val adapter = MyWorkoutAdapter(emptyList(), viewModel, this)
         binding.myWorkoutRV.adapter = adapter
-        viewModel.getAllPicked().observe(viewLifecycleOwner){
+        viewModel.pickedExercises.observe(viewLifecycleOwner) {
             adapter.newData(it)
         }
-
 
 
 

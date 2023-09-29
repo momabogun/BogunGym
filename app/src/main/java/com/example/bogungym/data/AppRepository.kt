@@ -21,8 +21,15 @@ class AppRepository(private val api: ExercisesApi, private val database: Exercis
 
     fun getExerciseByID(id: String): LiveData<Exercises> = database.exercisesDao.getExerciseByID(id)
 
+    fun updateAllFalse(){
+        database.exercisesDao.updateAllFalse()
+    }
+
 
     val exercisesList: LiveData<List<Exercises>> = database.exercisesDao.getAllExercises()
+
+
+    val pickedList : LiveData<List<Exercises>> = database.exercisesDao.getUserPicked()
 
     suspend fun getExercises() {
 
@@ -46,23 +53,10 @@ class AppRepository(private val api: ExercisesApi, private val database: Exercis
         }
     }
 
-    fun getAllPicked(): LiveData<List<Exercises>> = database.exercisesDao.getUserPicked()
 
 
-    //WORKOUTS
 
 
-    val workoutList: LiveData<List<UserWorkout>> = database.exercisesDao.getAllWorkouts()
-
-
-    fun addWorkout(workout: UserWorkout){
-        database.exercisesDao.insertWorkout(workout)
-    }
-
-
-    suspend fun deleteWorkout(workout: UserWorkout){
-        database.exercisesDao.delete(workout.id)
-    }
 
 
 

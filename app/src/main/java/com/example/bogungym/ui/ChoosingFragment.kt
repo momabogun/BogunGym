@@ -25,6 +25,7 @@ class ChoosingFragment : Fragment() {
     private var target: String = ""
 
 
+
     private lateinit var binding: FragmentChoosingBinding
 
 
@@ -36,7 +37,6 @@ class ChoosingFragment : Fragment() {
 
         arguments?.let { it ->
             target = it.getString("target", "")
-
         }
     }
 
@@ -60,9 +60,13 @@ class ChoosingFragment : Fragment() {
         viewModel.getExercises(target).observe(viewLifecycleOwner) { exercises ->
             adapter.newData(exercises)
         }
+
+
         binding.doneBTN.setOnClickListener {
 
-            findNavController().navigate(ChoosingFragmentDirections.actionChoosingFragmentToMyWorkoutFragment())
+
+            viewModel.updateAllFalse()
+            findNavController().navigate(ChoosingFragmentDirections.actionChoosingFragmentToHomeFragment())
 
         }
 

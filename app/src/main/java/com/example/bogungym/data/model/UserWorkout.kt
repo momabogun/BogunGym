@@ -6,9 +6,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.DocumentReference
 
-@Entity(tableName = "workout_table")
+
 data class UserWorkout(
-    @PrimaryKey(autoGenerate = true)
-    var id: Long = 0,
-    var name: String
+    var name: String = "",
+    var exercisesPicked : List<String> = emptyList()
 )

@@ -24,6 +24,8 @@ class CustomFragment : Fragment() {
 
     private val viewModel: ExercisesViewModel by activityViewModels()
 
+    private lateinit var collectionReference: CollectionReference
+
 
 
     private lateinit var binding: FragmentCustomBinding
@@ -31,6 +33,8 @@ class CustomFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        collectionReference = viewModel.getWorkoutsReference()
     }
 
     override fun onCreateView(
@@ -46,14 +50,35 @@ class CustomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.newWorkBTN.setOnClickListener {
-            findNavController().navigate(CustomFragmentDirections.actionCustomFragment2ToAddWorkoutFragment())
-
+            viewModel.updateAllFalse()
+            findNavController().navigate(CustomFragmentDirections.actionCustomFragment2ToWorkoutSaveFragment())
         }
 
 
 
-        val adapter = CustomAdapter(emptyList())
-        binding.customRV.adapter = adapter
+
+
+
+
+
+        collectionReference
+            .addSnapshotListener { value, error ->
+                if (error == null && value != null) {
+                    val workouts = value.toObjects<UserWorkout>()
+                    val adapter = CustomAdapter(workouts,viewModel)
+                    binding.customRV.adapter = adapter
+
+
+                } else {
+                    Log.e("FirebaseLog", "Error")
+                }
+
+            }
+
+
+
+
+
 
 
 
