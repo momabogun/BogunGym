@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import coil.transform.RoundedCornersTransformation
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.adapter.ExercisesAdapter
 import com.example.bogungym.data.model.Exercises
@@ -18,7 +19,7 @@ class ExerciseFragment : Fragment() {
     private lateinit var binding: FragmentExerciseBinding
 
     private var target: String = ""
-    private lateinit var exercises: List<Exercises>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

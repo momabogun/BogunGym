@@ -9,7 +9,7 @@ import com.example.bogungym.ui.AddWorkoutFragmentDirections
 import java.util.Locale
 
 class AddWorkoutAdapter(
-    private var dataset: List<BodyPart>,
+    private var dataset: List<BodyPart>
 ) : RecyclerView.Adapter<AddWorkoutAdapter.ItemViewHolder>() {
 
 

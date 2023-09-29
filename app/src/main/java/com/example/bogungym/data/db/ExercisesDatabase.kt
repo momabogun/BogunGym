@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.UserWorkout
 
-@Database(entities = [Exercises::class], version = 2)
+@Database(entities = [Exercises::class,UserWorkout::class], version = 1)
 abstract class ExercisesDatabase: RoomDatabase() {
 
     abstract val exercisesDao: ExercisesDao

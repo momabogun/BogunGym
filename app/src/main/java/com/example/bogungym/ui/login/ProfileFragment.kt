@@ -16,6 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.data.model.FirebaseProfile
 import com.example.bogungym.databinding.FragmentProfileBinding
@@ -28,7 +29,7 @@ import kotlin.math.pow
 
 class ProfileFragment : Fragment() {
 
-    val viewModel: FirebaseViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
 
 
     private lateinit var binding: FragmentProfileBinding

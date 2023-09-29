@@ -9,17 +9,17 @@ import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.databinding.ListItemCustomBinding
 import com.example.bogungym.databinding.ListItemExerciseBinding
 import com.example.bogungym.ui.ExerciseFragmentDirections
-import com.example.bogungym.ui.ExercisesViewModel
 import com.example.bogungym.ui.MyWorkoutFragment
-import com.example.bogungym.ui.login.FirebaseViewModel
 import java.util.Locale
 
 class MyWorkoutAdapter(
     private var dataset: List<Exercises>,
+    val viewModel: ExercisesViewModel,
     val context: MyWorkoutFragment
 ) : RecyclerView.Adapter<MyWorkoutAdapter.ItemViewHolder>() {
 
@@ -55,11 +55,11 @@ class MyWorkoutAdapter(
                 Locale.ROOT
             ) else it.toString()
         }
-//        val imgUri = item.gifUrl.toUri().buildUpon().scheme("https").build()
-//        Glide
-//            .with(context)
-//            .load(imgUri)
-//            .into(holder.binding.exerIV)
+        val imgUri = item.gifUrl.toUri().buildUpon().scheme("https").build()
+        Glide
+            .with(context)
+            .load(imgUri)
+           .into(holder.binding.exerIV)
 
 
 

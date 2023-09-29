@@ -26,7 +26,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.bogungym.databinding.ActivityMainBinding
 import com.example.bogungym.ui.CustomFragment
-import com.example.bogungym.ui.login.FirebaseViewModel
 import com.example.bogungym.ui.login.ProfileFragment
 
 import com.google.android.material.navigation.NavigationView

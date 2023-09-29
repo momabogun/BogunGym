@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.databinding.FragmentPasswordResetBinding
 
 class PasswordResetFragment : Fragment() {
 
     private lateinit var binding: FragmentPasswordResetBinding
-    private val viewModel: FirebaseViewModel by activityViewModels()
+    private val viewModel: ExercisesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.adapter.AddWorkoutAdapter
 import com.example.bogungym.adapter.CustomAdapter
@@ -21,6 +22,22 @@ class AddWorkoutFragment : Fragment() {
 
 
     private lateinit var binding: FragmentAddWorkoutBinding
+
+    private var wID: Long = 0
+
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+
+
+        arguments?.let { it ->
+            wID = it.getLong("wID")
+
+        }
+    }
 
 
     override fun onCreateView(

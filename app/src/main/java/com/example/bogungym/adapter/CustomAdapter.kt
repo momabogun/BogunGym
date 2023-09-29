@@ -13,9 +13,7 @@ import com.example.bogungym.databinding.ListItemBinding
 import com.example.bogungym.databinding.ListItemExerciseBinding
 import com.example.bogungym.ui.CustomFragment
 import com.example.bogungym.ui.CustomFragmentDirections
-import com.example.bogungym.ui.ExercisesViewModel
 import com.example.bogungym.ui.HomeFragmentDirections
-import com.example.bogungym.ui.login.FirebaseViewModel
 
 class CustomAdapter (
     private var dataset: List<UserWorkout>
@@ -50,7 +48,6 @@ class CustomAdapter (
 
         holder.itemView.setOnClickListener {
             val navController = holder.itemView.findNavController()
-            navController.navigate(CustomFragmentDirections.actionCustomFragment2ToMyWorkoutFragment(item.id))
         }
 
 

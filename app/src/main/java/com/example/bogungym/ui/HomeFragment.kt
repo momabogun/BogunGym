@@ -14,17 +14,17 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.MainActivity
 import com.example.bogungym.R
 import com.example.bogungym.adapter.GymAdapter
 import com.example.bogungym.data.Datasource
 import com.example.bogungym.databinding.FragmentHomeBinding
-import com.example.bogungym.ui.login.FirebaseViewModel
 
 class HomeFragment : Fragment() {
 
 
-    private val viewModel: FirebaseViewModel by activityViewModels()
+    private val viewModel: ExercisesViewModel by activityViewModels()
 
 
 

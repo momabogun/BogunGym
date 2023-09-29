@@ -1,17 +1,21 @@
 package com.example.bogungym.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.data.model.Exercises
+import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.ListItemCustomBinding
 import com.example.bogungym.ui.ChoosingFragment
-import com.example.bogungym.ui.ExercisesViewModel
+
+import com.google.firebase.firestore.ktx.toObjects
 import java.util.Locale
 
 class ChoosingAdapter(
@@ -65,16 +69,20 @@ class ChoosingAdapter(
         }
 
 
+
+
+
+
         holder.binding.chooseBTN.setOnClickListener {
-            item.userPick = !item.userPick
-            viewModel.updatePick(if (item.userPick) 1 else 0, item.id)
+            if (!item.userPick){
 
-
-            if (item.userPick) {
-                holder.binding.imageView3.visibility = View.VISIBLE
-            } else {
-                holder.binding.imageView3.visibility = View.GONE
+                viewModel.addPickedExercise(item.id)
+            } else{
+                viewModel.removePickedExercise(item.id)
             }
+
+            viewModel.updatePick(!item.userPick,item.id)
+
 
         }
     }

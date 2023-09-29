@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.bumptech.glide.Glide
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.adapter.ExercisesAdapter
 import com.example.bogungym.data.model.Exercises

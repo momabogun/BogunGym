@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.adapter.ChoosingAdapter
 import com.example.bogungym.data.model.Exercises
+import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.FragmentChoosingBinding
 import com.example.bogungym.databinding.FragmentExerciseBinding
-import com.example.bogungym.ui.login.FirebaseViewModel
 import com.google.firebase.firestore.DocumentReference
 
 
@@ -18,9 +20,6 @@ class ChoosingFragment : Fragment() {
 
 
     private val viewModel: ExercisesViewModel by activityViewModels()
-    private val firebaseViewModel: FirebaseViewModel by activityViewModels()
-
-    private lateinit var workoutIdentifier: String
 
 
     private var target: String = ""
@@ -37,7 +36,6 @@ class ChoosingFragment : Fragment() {
 
         arguments?.let { it ->
             target = it.getString("target", "")
-            workoutIdentifier = it.getString("workoutIdentifier", "")
 
         }
     }
@@ -56,29 +54,20 @@ class ChoosingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-        val adapter = ChoosingAdapter(emptyList(),this,viewModel)
+        val adapter = ChoosingAdapter(emptyList(), this, viewModel)
         binding.chooseRV.adapter = adapter
 
         viewModel.getExercises(target).observe(viewLifecycleOwner) { exercises ->
             adapter.newData(exercises)
-
         }
-
         binding.doneBTN.setOnClickListener {
-            val id : String = "56665656"
-            val name: String = "bla bla"
-            val gifUrl: String = ""
-            val equipment: String = "dadasda"
-            val target: String = "dasdasda"
-            firebaseViewModel.addExercisesToWorkout(Exercises(id,name,gifUrl,equipment,target,false),workoutIdentifier)
+
+            findNavController().navigate(ChoosingFragmentDirections.actionChoosingFragmentToMyWorkoutFragment())
 
         }
 
 
-
-
     }
 
 
-
-    }
+}

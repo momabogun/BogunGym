@@ -8,14 +8,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.databinding.FragmentLoginBinding
 import com.example.bogungym.databinding.FragmentOnboardingBinding
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.FirebaseAuth
+
 
 
 class OnboardingFragment : Fragment() {
@@ -25,7 +22,7 @@ class OnboardingFragment : Fragment() {
 //    private lateinit var auth: FirebaseAuth
 
 
-    val viewModel: FirebaseViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
     private lateinit var binding: FragmentOnboardingBinding
 
 

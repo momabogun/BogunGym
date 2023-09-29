@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.databinding.FragmentLoginBinding
 import com.example.bogungym.databinding.FragmentSignUpBinding
@@ -17,7 +18,7 @@ import com.example.bogungym.databinding.FragmentSignUpBinding
 class SignUpFragment : Fragment() {
 
 
-    val viewModel: FirebaseViewModel by activityViewModels()
+    val viewModel: ExercisesViewModel by activityViewModels()
     private lateinit var binding: FragmentSignUpBinding
 
 
@@ -35,14 +36,7 @@ class SignUpFragment : Fragment() {
         binding.signUpBTN.setOnClickListener {
             val email = binding.signUpEmail.text.toString()
             val password = binding.signUpPassword.text.toString()
-
-
-            if (email != "" && password != ""){
-                viewModel.signUp(email, password)
-                Toast.makeText(requireContext(),"Verify your email address", Toast.LENGTH_LONG).show()
-            }
-
-
+            viewModel.signUp(email, password)
         }
 
 
