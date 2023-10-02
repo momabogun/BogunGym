@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.drawerlayout.widget.DrawerLayout
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private val viewModel: ExercisesViewModel by viewModels()
 
 
     private lateinit var navController: NavController
@@ -42,6 +45,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     private lateinit var drawableLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+
+
+
+    fun toolbarChange(title: String){
+
+        supportActionBar?.title = title
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,7 +97,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
+
+
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
+
+
 
 
             if (destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
@@ -120,6 +138,11 @@ class MainActivity : AppCompatActivity() {
                 binding.logoIVLight.visibility = View.GONE
             }
 
+
+            if (destination.id == R.id.customFragment2 || destination.id == R.id.workoutSaveFragment || destination.id == R.id.addWorkoutFragment){
+                binding.appBarLayout.visibility = View.GONE
+            }
+
         }
 
 
@@ -141,7 +164,6 @@ class MainActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 navController.navigateUp()
-                Toast.makeText(this@MainActivity, "Back Pressed", Toast.LENGTH_LONG).show()
             }
 
 
@@ -154,6 +176,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
+
+
 
 
     override fun onSupportNavigateUp(): Boolean {

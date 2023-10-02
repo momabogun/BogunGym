@@ -1,9 +1,11 @@
 package com.example.bogungym
 
 import android.app.Application
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +16,7 @@ import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.FirebaseProfile
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.data.remote.ExercisesApi
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthEmailException
 import com.google.firebase.auth.FirebaseAuthException
@@ -23,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuthRegistrar
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +34,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ExercisesViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -79,6 +84,8 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     //FIREBASE
 
 
+
+
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val fireStore = FirebaseFirestore.getInstance()
     private val firebaseStorage = FirebaseStorage.getInstance()
@@ -104,11 +111,33 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
+
+
+    fun deleteProfileCollection(){
+        firebaseAuth.currentUser!!.delete()
+        firebaseAuth.signOut()
+        _user.value = firebaseAuth.currentUser
+
+    }
+
+
     fun setupUserEnv() {
         _user.value = firebaseAuth.currentUser
 
         profileRef = fireStore.collection("Profile").document(firebaseAuth.currentUser?.uid!!)
 
+    }
+
+
+
+
+
+
+    fun deleteWorkout(name: String) {
+        fireStore
+            .collection("Profile")
+            .document(firebaseAuth.currentUser?.uid!!)
+            .collection("workouts").document(name).delete()
     }
 
     var workoutName:String = ""
@@ -203,6 +232,8 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
         profileRef.set(profile)
     }
 
+
+
     val listOfExercises = mutableListOf<String>()
 
 
@@ -215,22 +246,11 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
 
     }
 
-
-
-
     fun signOut() {
         updateAllFalse()
         firebaseAuth.signOut()
         _user.value = firebaseAuth.currentUser
     }
-
-
-
-
-
-
-
-
 
 
 

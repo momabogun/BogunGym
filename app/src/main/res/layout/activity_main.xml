@@ -73,9 +73,6 @@
                 app:srcCompat="@drawable/_toolbar_black" />
 
 
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

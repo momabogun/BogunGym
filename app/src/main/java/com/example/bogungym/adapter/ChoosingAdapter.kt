@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bogungym.ExercisesViewModel
@@ -14,6 +15,7 @@ import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.ListItemCustomBinding
 import com.example.bogungym.ui.ChoosingFragment
+import com.example.bogungym.ui.ChoosingFragmentDirections
 
 import com.google.firebase.firestore.ktx.toObjects
 import java.util.Locale
@@ -58,6 +60,7 @@ class ChoosingAdapter(
         val imgUri = item.gifUrl.toUri().buildUpon().scheme("https").build()
         Glide
             .with(context)
+            .asBitmap()
             .load(imgUri)
             .into(holder.binding.exerIV)
         holder.binding.chooseBTN.setImageResource(R.drawable.baseline_circle_24)
@@ -69,6 +72,10 @@ class ChoosingAdapter(
         } else {
             holder.binding.imageView3.visibility = View.GONE
 
+        }
+        holder.itemView.setOnClickListener {
+            val navController = holder.itemView.findNavController()
+            navController.navigate(ChoosingFragmentDirections.actionChoosingFragmentToDetailFragment(item.id))
         }
 
 

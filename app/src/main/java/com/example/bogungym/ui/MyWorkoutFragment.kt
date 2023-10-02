@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.bogungym.ExercisesViewModel
+import com.example.bogungym.MainActivity
 import com.example.bogungym.R
 import com.example.bogungym.adapter.MyWorkoutAdapter
 import com.example.bogungym.data.model.Exercises
@@ -62,9 +63,17 @@ class MyWorkoutFragment : Fragment() {
         viewModel.findExercisesInWorkout(workoutIdentifier)
 
 
+        val mainActivity = activity as MainActivity
+
+        mainActivity.toolbarChange(workoutIdentifier)
 
 
-        val adapter = MyWorkoutAdapter(emptyList(), viewModel, this)
+
+
+
+
+
+        val adapter = MyWorkoutAdapter(emptyList(), viewModel, requireContext())
         binding.myWorkoutRV.adapter = adapter
         viewModel.pickedExercises.observe(viewLifecycleOwner) {
             adapter.newData(it)

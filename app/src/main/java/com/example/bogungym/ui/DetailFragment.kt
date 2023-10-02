@@ -1,7 +1,5 @@
 package com.example.bogungym.ui
 
-import android.graphics.drawable.AnimatedVectorDrawable
-import android.os.Binder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,15 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
-import coil.load
-import coil.transform.RoundedCornersTransformation
 import com.bumptech.glide.Glide
 import com.example.bogungym.ExercisesViewModel
-import com.example.bogungym.R
-import com.example.bogungym.adapter.ExercisesAdapter
+import com.example.bogungym.MainActivity
 import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.databinding.FragmentDetailBinding
-import com.example.bogungym.databinding.FragmentExerciseBinding
 import java.util.Locale
 
 
@@ -62,16 +56,25 @@ class DetailFragment : Fragment() {
 
         viewModel.getExerciseByID(id).observe(viewLifecycleOwner) { exercise ->
 
-            binding.detailTV.text = exercise.name.replaceFirstChar {
+
+
+
+
+            val mainActivity = activity as MainActivity
+
+            mainActivity.toolbarChange(exercise.name.replaceFirstChar {
                 if (it.isLowerCase()) it.titlecase(
                     Locale.ROOT
                 ) else it.toString()
-            }
+            })
+
+
 
             val imgUri = exercise.gifUrl.toUri().buildUpon().scheme("https").build()
 
             Glide
                 .with(this)
+                .asGif()
                 .load(imgUri)
                 .into(binding.exerciseIV)
 

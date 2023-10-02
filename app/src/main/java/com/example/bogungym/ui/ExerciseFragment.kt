@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import coil.transform.RoundedCornersTransformation
 import com.example.bogungym.ExercisesViewModel
-import com.example.bogungym.R
 import com.example.bogungym.adapter.ExercisesAdapter
-import com.example.bogungym.data.model.Exercises
+import com.example.bogungym.adapter.MyWorkoutAdapter
 import com.example.bogungym.databinding.FragmentExerciseBinding
 
 class ExerciseFragment : Fragment() {
@@ -45,7 +43,7 @@ class ExerciseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ExercisesAdapter(emptyList())
+        val adapter = ExercisesAdapter(emptyList(),viewModel,requireContext())
         binding.exerciseRV.adapter = adapter
 
 

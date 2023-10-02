@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bogungym.ExercisesViewModel
+import com.example.bogungym.MainActivity
 import com.example.bogungym.adapter.ChoosingAdapter
 import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.FragmentChoosingBinding
 import com.example.bogungym.databinding.FragmentExerciseBinding
 import com.google.firebase.firestore.DocumentReference
+import java.util.Locale
+
+
 
 
 class ChoosingFragment : Fragment() {
@@ -52,6 +56,16 @@ class ChoosingFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+
+        val mainActivity = activity as MainActivity
+
+        mainActivity.toolbarChange(target.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.ROOT
+            ) else it.toString()
+        })
 
 
         val adapter = ChoosingAdapter(emptyList(), this, viewModel)

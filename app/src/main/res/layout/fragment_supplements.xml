@@ -3,17 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?colorOnPrimary"
     tools:context=".ui.SupplementsFragment">
 
 
     <SearchView
         android:id="@+id/searchView"
+        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:iconifiedByDefault="false"
         android:queryHint="Search"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#CCCCCC"
         android:background="@drawable/person_shape"
         app:layout_constraintStart_toStartOf="parent"
         android:animationCache="true"
