@@ -37,10 +37,17 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ExercisesViewModel(application: Application) : AndroidViewModel(application) {
-
-    //EXERCISES
     private val database = getDatabase(application)
     private val repository = AppRepository(ExercisesApi, database)
+
+
+
+
+
+
+
+    //EXERCISES
+
 
 
     val exercises = repository.exercisesList

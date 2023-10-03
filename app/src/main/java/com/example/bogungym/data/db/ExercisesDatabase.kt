@@ -5,7 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.bogungym.data.model.Exercises
-import com.example.bogungym.data.model.UserWorkout
+
+
 
 @Database(entities = [Exercises::class], version = 1)
 abstract class ExercisesDatabase: RoomDatabase() {
@@ -24,7 +25,7 @@ fun getDatabase(context: Context): ExercisesDatabase {
             INSTANCE = Room.databaseBuilder(
                 context.applicationContext,
                 ExercisesDatabase::class.java,
-                "exercises_database"
+                "bogunGym_database"
             ).fallbackToDestructiveMigration()
                 .build()
         }

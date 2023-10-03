@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bogungym.ExercisesViewModel
@@ -24,13 +25,7 @@ class WorkoutSaveFragment : Fragment() {
 
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +56,18 @@ class WorkoutSaveFragment : Fragment() {
 //
 //            viewModel.insertWorkout(UserWorkout(0,name,list))
 //        }
+
+
+        val isNightMode =
+            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+
+        if (isNightMode) {
+            binding.imageView5.visibility = View.VISIBLE
+            binding.imageView.visibility = View.GONE
+        } else {
+            binding.imageView.visibility = View.VISIBLE
+            binding.imageView5.visibility = View.GONE
+        }
 
 
 

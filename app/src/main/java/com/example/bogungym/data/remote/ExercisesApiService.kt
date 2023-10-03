@@ -12,7 +12,7 @@ const val BASE_URL ="https://exercisedb.p.rapidapi.com/"
 
 val client: OkHttpClient = OkHttpClient.Builder().addInterceptor { chain ->
     val newRequest: Request = chain.request().newBuilder()
-        .addHeader("X-RapidAPI-Key", "b9ed995cd2mshfc18531cd298ad8p191c11jsn85feee9de4b9")
+        .addHeader("X-RapidAPI-Key", "d6d1c654f7msh0acadc66111cf0fp1820a8jsn05d4a98ecbb1")
         .addHeader("X-RapidAPI-Host", "exercisedb.p.rapidapi.com")
         .build()
     chain.proceed(newRequest)
@@ -31,7 +31,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ExercisesApiService {
-    @GET("exercises")
+    @GET("exercises?limit=300")
     suspend fun getExercises(): List<Exercises>
 
 }

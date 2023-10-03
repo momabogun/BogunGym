@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            if (destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
+            if (destination.id == R.id.workoutSaveFragment ||destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
                 binding.bottomNavBMV.visibility = View.GONE
                 binding.appBarLayout.visibility = View.GONE
             } else {
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-            if (destination.id == R.id.customFragment2 || destination.id == R.id.workoutSaveFragment || destination.id == R.id.addWorkoutFragment){
+            if (destination.id == R.id.customFragment2 || destination.id == R.id.addWorkoutFragment){
                 binding.appBarLayout.visibility = View.GONE
             }
 

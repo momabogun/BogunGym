@@ -70,7 +70,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/myToolbar"
                 app:layout_constraintStart_toStartOf="@+id/myToolbar"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/_toolbar_black" />
+                app:srcCompat="@drawable/_toolbar_dark" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

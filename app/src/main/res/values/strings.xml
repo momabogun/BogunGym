@@ -44,4 +44,18 @@
     <string name="forgot_password"><u>Forgot password?</u></string>
 
 
+    <string name="beginners_workout">Beginners Workout</string>
+    <string name="intermediate_workout">Intermediate Workout</string>
+    <string name="advanced_workout">Advanced Workout</string>
+    <string name="lose_belly_b">LOSE BELLY FAT</string>
+    <string name="rock_hard_i">ROCK HARD ABS</string>
+    <string name="six_pack_a">SIX PACK ABS</string>
+    <string name="power_building">POWER-BUILDING</string>
+    <string name="strength_workout">STRENGTH WORKOUT</string>
+    <string name="weight_gain">WEIGHT GAIN</string>
+    <string name="endurance_workout">ENDURANCE WORKOUT</string>
+    <string name="women_muscle">WOMEN MUSCLE BUILD WORKOUT</string>
+    <string name="conditional">CORE CONDITIONING</string>
+
+
 </resources>

@@ -5,9 +5,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import com.example.bogungym.data.model.Exercises
-import com.example.bogungym.data.model.UserWorkout
+
 
 @Dao
 interface ExercisesDao {
@@ -37,6 +36,12 @@ interface ExercisesDao {
 
     @Query("UPDATE exercise_table SET userPick = 0 WHERE userPick = 1")
     fun updateAllFalse()
+
+
+
+
+
+
 
 
 

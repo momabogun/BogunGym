@@ -193,4 +193,9 @@
             android:id="@+id/action_workoutSaveFragment_to_addWorkoutFragment"
             app:destination="@id/addWorkoutFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/workoutFragment2"
+        android:name="com.example.bogungym.ui.WorkoutFragment"
+        android:label="Workouts"
+        tools:layout="@layout/fragment_workout" />
 </navigation>

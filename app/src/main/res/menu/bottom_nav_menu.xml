@@ -16,7 +16,7 @@
     
 
     <item
-        android:id="@+id/exerciseFragment"
+        android:id="@+id/workoutFragment2"
         android:title="Workouts"
         android:icon="@drawable/baseline_fitness_center_24"
         />
