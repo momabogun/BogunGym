@@ -12,6 +12,9 @@ import com.example.bogungym.data.model.Exercises
 interface ExercisesDao {
 
 
+
+
+
 // EXERCISES
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(exercises: List<Exercises>)

@@ -37,6 +37,10 @@ class OnboardingFragment : Fragment() {
         return binding.root
     }
 
+
+
+
+
 //
 //    private fun signIn(){
 //
@@ -51,6 +55,18 @@ class OnboardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
+
+
+        if (isDarkMode){
+            binding.onboardIV.visibility = View.GONE
+            binding.imageView6.visibility = View.VISIBLE
+        }else{
+            binding.imageView6.visibility = View.GONE
+            binding.onboardIV.visibility = View.VISIBLE
+        }
 
 
 //        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

@@ -66,7 +66,7 @@
                 android:id="@+id/logoIV_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/myToolbar"
                 app:layout_constraintStart_toStartOf="@+id/myToolbar"
                 app:layout_constraintTop_toTopOf="parent"

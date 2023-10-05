@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f0f0"
+    android:background="?colorSecondary"
     android:gravity="center"
     tools:context=".ui.login.SignUpFragment">
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="?colorOnPrimary"
         android:layout_marginBottom="32dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
                 android:textAlignment="center"
-                android:textColor="#00897B"
+                android:textColor="?colorPrimary"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -58,10 +58,10 @@
                 android:drawableStart="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColorHint="@color/SI_Grey"
-                android:drawableTint="#00897B"
+                android:drawableTint="?colorPrimary"
                 android:hint="Email"
                 android:padding="8dp"
-                android:textColor="#00897B" />
+                android:textColor="?colorPrimary" />
 
 
             <EditText
@@ -73,22 +73,22 @@
                 android:drawableStart="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColorHint="@color/SI_Grey"
-                android:drawableTint="#00897B"
+                android:drawableTint="?colorPrimary"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="#00897B" />
+                android:textColor="?colorPrimary" />
 
             <Button
                 android:id="@+id/signUpBTN"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="#00897B"
+                android:backgroundTint="?colorPrimary"
                 android:text="Sign Up"
                 android:textSize="18dp"
-                android:textColor="@color/white"
+                android:textColor="?colorOnPrimary"
                 app:cornerRadius="20dp" />
 
             <TextView
@@ -99,13 +99,24 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:text="Already an user? Login"
-                android:textColor="#00897B"
+                android:textColor="?colorPrimary"
                 android:textSize="18sp" />
 
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/_toolbar_dark"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

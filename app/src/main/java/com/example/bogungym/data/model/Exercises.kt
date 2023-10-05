@@ -4,6 +4,8 @@ import androidx.room.DatabaseView
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Embedded
+import androidx.room.TypeConverters
+
 @Entity(tableName = "exercise_table")
 data class Exercises (
     @PrimaryKey(autoGenerate = false)

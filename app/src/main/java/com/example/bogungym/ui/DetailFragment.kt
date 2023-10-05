@@ -58,8 +58,6 @@ class DetailFragment : Fragment() {
 
 
 
-
-
             val mainActivity = activity as MainActivity
 
             mainActivity.toolbarChange(exercise.name.replaceFirstChar {

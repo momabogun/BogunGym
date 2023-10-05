@@ -33,6 +33,19 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
+
+
+        if (isDarkMode){
+            binding.lightIV.visibility = View.GONE
+            binding.imageView2.visibility = View.VISIBLE
+        }else{
+            binding.imageView2.visibility = View.GONE
+            binding.lightIV.visibility = View.VISIBLE
+        }
+
+
+
         binding.signUpBTN.setOnClickListener {
             val email = binding.signUpEmail.text.toString()
             val password = binding.signUpPassword.text.toString()

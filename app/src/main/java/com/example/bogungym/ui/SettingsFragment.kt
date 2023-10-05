@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
+import com.example.bogungym.data.model.FirebaseProfile
 import com.example.bogungym.databinding.FragmentHomeBinding
 import com.example.bogungym.databinding.FragmentSettingsBinding
 import com.example.bogungym.ui.login.ProfileFragmentDirections
@@ -46,8 +47,10 @@ class SettingsFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val isNightMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
-        binding.darkModeSW.isChecked = isNightMode
+        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
+        binding.darkModeSW.isChecked = isDarkMode
+
+
 
         binding.darkModeSW.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f0f0"
+    android:background="?colorSecondary"
     tools:context=".ui.login.OnboardingFragment">
 
 
@@ -16,11 +16,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:drawableLeft="@drawable/baseline_email_24"
-        android:textColor="@color/white"
+        android:textColor="?colorOnPrimary"
         android:text="Sign in with Email"
-        android:drawableTint="@color/white"
+        android:drawableTint="?colorOnPrimary"
 
-        android:backgroundTint="#00897B"
+        android:backgroundTint="?colorPrimary"
         android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,13 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textColor="@color/white"
+        android:textColor="?colorOnPrimary"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Sign in with Facebook"
         android:textAlignment="textStart"
         android:drawableLeft="@drawable/com_facebook_favicon_blue"
-        android:backgroundTint="#00897B"
+        android:backgroundTint="?colorPrimary"
 
         android:drawablePadding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,22 +48,22 @@
         android:id="@+id/textView2"
         android:layout_width="222dp"
         android:layout_height="73dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="260dp"
         android:gravity="center"
         android:text="Create an account to Save your progress"
+        android:textColor="?colorOnSecondary"
         android:textSize="20sp"
-        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboardIV" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/onboardIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:src="@drawable/_toolbar_light"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -75,12 +75,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:textColor="@color/white"
+        android:textColor="?colorOnPrimary"
         android:text="Sign in with Google"
         android:drawableLeft="@drawable/googleg_standard_color_18"
         android:textAlignment="textStart"
         android:drawablePadding="8dp"
-        android:backgroundTint="#00897B"
+        android:backgroundTint="?colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/facebookBTN" />
@@ -90,7 +90,7 @@
         android:layout_width="333dp"
         android:layout_height="63dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/black"
+        android:textColor="?colorOnSecondary"
         android:gravity="end"
         android:text="@string/by_tapping_continue_you_agree_to_our_terms_and_acknowledge_that_you_have_read_our_privacy_policy"
         app:layout_constraintEnd_toEndOf="@+id/googleBTN"
@@ -104,9 +104,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/black"
+        android:textColor="?colorOnSecondary"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/_toolbar_dark"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

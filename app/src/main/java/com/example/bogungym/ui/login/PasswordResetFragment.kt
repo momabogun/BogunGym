@@ -29,6 +29,17 @@ class PasswordResetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
+
+
+        if (isDarkMode){
+            binding.lightRIV.visibility = View.GONE
+            binding.imageView8.visibility = View.VISIBLE
+        }else{
+            binding.imageView8.visibility = View.GONE
+            binding.lightRIV.visibility = View.VISIBLE
+        }
+
         binding.btBackToLogin.setOnClickListener {
             findNavController().navigateUp()
         }

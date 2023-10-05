@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
@@ -42,13 +44,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
 
 
 
-
-
-
-
     //EXERCISES
-
-
 
     val exercises = repository.exercisesList
 
@@ -83,6 +79,9 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
             repository.updatePick(liked, id)
         }
     }
+
+
+
 
 
 

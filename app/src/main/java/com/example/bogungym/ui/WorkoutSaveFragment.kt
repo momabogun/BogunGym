@@ -58,10 +58,9 @@ class WorkoutSaveFragment : Fragment() {
 //        }
 
 
-        val isNightMode =
-            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
 
-        if (isNightMode) {
+        if (isDarkMode) {
             binding.imageView5.visibility = View.VISIBLE
             binding.imageView.visibility = View.GONE
         } else {

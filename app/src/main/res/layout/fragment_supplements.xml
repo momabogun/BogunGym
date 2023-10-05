@@ -34,7 +34,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:paddingHorizontal="0dp"
-        android:paddingVertical="0dp"
+        android:paddingVertical="8dp"
         android:paddingStart="8dp"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

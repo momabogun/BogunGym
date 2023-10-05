@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -95,6 +96,25 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavBMV.setupWithNavController(navController)
 
+        val headerView = hamNavigationView.getHeaderView(0)
+
+        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
+
+
+
+        val lightImage: ImageView = headerView.findViewById(R.id.light_image)
+        val darkImage: ImageView = headerView.findViewById(R.id.dark_image)
+
+
+        if (isDarkMode){
+            lightImage.visibility = View.GONE
+            darkImage.visibility = View.VISIBLE
+        } else{
+            lightImage.visibility = View.VISIBLE
+            darkImage.visibility = View.GONE
+        }
+
+
 
 
 
@@ -118,11 +138,7 @@ class MainActivity : AppCompatActivity() {
             if (destination.id == R.id.homeFragment) {
 
 
-
-                val isNightMode =
-                    AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
-
-                if (isNightMode) {
+                if (isDarkMode) {
                     binding.logoIVDark.visibility = View.VISIBLE
                     binding.logoIVLight.visibility = View.GONE
                 } else {
