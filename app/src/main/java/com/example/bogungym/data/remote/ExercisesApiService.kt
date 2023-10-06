@@ -1,5 +1,6 @@
 package com.example.bogungym.data.remote
 
+import com.example.bogungym.BuildConfig
 import com.example.bogungym.data.model.Exercises
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -10,9 +11,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 const val BASE_URL ="https://exercisedb.p.rapidapi.com/"
 
+const val apiKey = BuildConfig.API_KEY
+
 val client: OkHttpClient = OkHttpClient.Builder().addInterceptor { chain ->
     val newRequest: Request = chain.request().newBuilder()
-        .addHeader("X-RapidAPI-Key", "d6d1c654f7msh0acadc66111cf0fp1820a8jsn05d4a98ecbb1")
+        .addHeader("X-RapidAPI-Key", apiKey)
         .addHeader("X-RapidAPI-Host", "exercisedb.p.rapidapi.com")
         .build()
     chain.proceed(newRequest)
