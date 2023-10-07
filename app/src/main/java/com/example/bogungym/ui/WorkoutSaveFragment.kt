@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -73,6 +74,10 @@ class WorkoutSaveFragment : Fragment() {
 
        binding.saveBTN.setOnClickListener {
            val name = binding.myWorkET.text.toString()
+           if (name == ""){
+               Toast.makeText(requireContext(),"Please give name to your workout.", Toast.LENGTH_LONG).show()
+               return@setOnClickListener
+           }
            val workout = UserWorkout(name)
            viewModel.addWorkout(workout,name)
            findNavController().navigate(WorkoutSaveFragmentDirections.actionWorkoutSaveFragmentToAddWorkoutFragment())

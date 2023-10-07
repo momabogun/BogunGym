@@ -18,6 +18,7 @@
             android:title="Settings" />
 
     <item
+        android:id="@+id/aboutUsFragment"
         android:icon="@drawable/baseline_info_24"
         android:title="About Us" />
 

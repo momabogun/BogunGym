@@ -144,6 +144,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addWorkoutFragment"
@@ -171,6 +174,9 @@
         <action
             android:id="@+id/action_choosingFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_choosingFragment_to_customFragment2"
+            app:destination="@id/customFragment2" />
     </fragment>
     <fragment
         android:id="@+id/myWorkoutFragment"
@@ -198,4 +204,9 @@
         android:name="com.example.bogungym.ui.WorkoutFragment"
         android:label="Workouts"
         tools:layout="@layout/fragment_workout" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.bogungym.ui.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>

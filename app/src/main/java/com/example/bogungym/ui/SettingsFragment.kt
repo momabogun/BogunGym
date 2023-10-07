@@ -81,6 +81,10 @@ class SettingsFragment : Fragment() {
             }
         }
 
+        binding.aboutUs.setOnClickListener {
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToAboutUsFragment())
+        }
+
 
 
 

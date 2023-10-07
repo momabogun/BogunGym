@@ -1,5 +1,6 @@
 package com.example.bogungym.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -77,10 +78,18 @@ class ChoosingFragment : Fragment() {
 
 
         binding.doneBTN.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setPositiveButton("Yes") { _, _ ->
+                viewModel.updateAllFalse()
+                findNavController().navigate(ChoosingFragmentDirections.actionChoosingFragmentToCustomFragment2())
+            }
+            builder.setNegativeButton("No") { _, _ ->
+            }
+            builder.setTitle("Save")
+            builder.setMessage("Are you sure that you want to save this workout?")
+            builder.create().show()
 
 
-            viewModel.updateAllFalse()
-            findNavController().navigate(ChoosingFragmentDirections.actionChoosingFragmentToHomeFragment())
 
         }
 

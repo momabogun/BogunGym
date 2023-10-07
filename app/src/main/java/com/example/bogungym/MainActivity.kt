@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.profileFragment -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.profileFragment)
                 R.id.customFragment2 -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.customFragment2)
                 R.id.settingsFragment -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.settingsFragment)
+                R.id.aboutUsFragment -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.aboutUsFragment)
             }
 
             return@setNavigationItemSelectedListener false
@@ -124,7 +125,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            if (destination.id == R.id.workoutSaveFragment ||destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
+            if (destination.id == R.id.aboutUsFragment ||destination.id == R.id.workoutSaveFragment ||destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
                 binding.bottomNavBMV.visibility = View.GONE
                 binding.appBarLayout.visibility = View.GONE
             } else {
