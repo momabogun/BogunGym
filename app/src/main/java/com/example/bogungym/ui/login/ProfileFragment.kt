@@ -1,6 +1,7 @@
 package com.example.bogungym.ui.login
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -24,6 +25,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
+import com.google.firebase.storage.FirebaseStorage
+import java.util.UUID
 import kotlin.math.pow
 
 
@@ -33,6 +36,7 @@ class ProfileFragment : Fragment() {
 
 
     private lateinit var binding: FragmentProfileBinding
+
 
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -54,15 +58,12 @@ class ProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         user = viewModel.user.value!!
-
 
 
     }
 
-
-    @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
+    @SuppressLint("SetTextI18n")
     private fun calculateBMI(){
         val weight = binding.editTextInputWeight.text.toString().toFloatOrNull()
         val height = binding.editTextInputHeight.text.toString().toFloatOrNull()
@@ -72,16 +73,14 @@ class ProfileFragment : Fragment() {
             val bmi = weight/(height/100).pow(2)
             val bmiResult = String.format("%.2f", bmi)
 
-            val drawableOverweight = resources.getDrawable(R.drawable.round_doctor,null)
-            val drawableNormal = resources.getDrawable(R.drawable.round,null)
-            val drawableBad = resources.getDrawable(R.drawable.round_obese,null)
-
             val bmiCategory = when {
                 bmi < 18.5 -> "Underweight"
                 bmi < 25 -> "Normal weight"
                 bmi < 30 -> "Overweight"
                 else -> "Obese"
             }
+
+
             binding.bmiTV.text = "BMI: $bmiResult\nCategory: $bmiCategory"
         } else{
             binding.bmiTV.text = "BMI: Invalid Input"
@@ -104,16 +103,33 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.logOutBTN.setOnClickListener {
-            viewModel.signOut()
+
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setPositiveButton("Yes") { _, _ ->
+                viewModel.signOut()
+            }
+            builder.setNegativeButton("No") { _, _ ->
+            }
+            builder.setTitle("Log Out")
+            builder.setMessage("Are you sure that you want to Log Out?")
+            builder.create().show()
+
         }
+
+
 
         binding.bmiTV.setOnClickListener {
             calculateBMI()
         }
 
+
+
         binding.editProfile.setOnClickListener {
             getContent.launch("image/*")
         }
+
+
+
 
         viewModel.user.observe(viewLifecycleOwner){
             if (it == null){
@@ -121,43 +137,12 @@ class ProfileFragment : Fragment() {
             }
         }
 
+
+
+
         binding.settingsBTN.setOnClickListener {
             findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToSettingsFragment())
         }
-
-//        binding.editBTN.setOnClickListener {
-//
-//            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToHomeFragment())
-//            val name = binding.editTextInputName.text.toString()
-//            val weight = binding.editTextInputWeight.text.toString().toInt()
-//            val height = binding.editTextInputHeight.text.toString().toInt()
-//            val age = binding.editTextInputAge.text.toString().toInt()
-//
-//            val updateMap = mapOf(
-//                "name" to name,
-//                "weight" to weight,
-//                "height" to height,
-//                "age" to age
-//            )
-//            viewModel.profileRef.update(updateMap)
-//
-//            Toast.makeText(requireContext(),"Successfully Edited",Toast.LENGTH_LONG).show()
-//        }
-
-
-
-        binding.editBTN.setOnClickListener {
-
-            val firstName = binding.editTextInputName.text.toString()
-            val age = binding.editTextInputAge.text.toString().toInt()
-            val height = binding.editTextInputHeight.text.toString().toInt()
-            val weight = binding.editTextInputWeight.text.toString().toInt()
-            viewModel.updateProfile(FirebaseProfile(firstName, weight, height,age))
-
-            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToHomeFragment())
-        }
-
-
 
 
 
@@ -179,10 +164,24 @@ class ProfileFragment : Fragment() {
         }
 
 
+
+
+        binding.editBTN.setOnClickListener {
+
+            val firstName = binding.editTextInputName.text.toString()
+            val age = binding.editTextInputAge.text.toString().toInt()
+            val height = binding.editTextInputHeight.text.toString().toInt()
+            val weight = binding.editTextInputWeight.text.toString().toInt()
+
+            viewModel.updateProfile(FirebaseProfile(firstName, weight, height,age))
+
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToHomeFragment())
+        }
+
+
+
+
         binding.emailProfileTV.text = user.email
-
-
-
 
 
 

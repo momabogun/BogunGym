@@ -36,6 +36,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class ExercisesViewModel(application: Application) : AndroidViewModel(application) {
@@ -235,7 +236,15 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     fun updateProfile(profile: FirebaseProfile) {
-        profileRef.set(profile)
+        viewModelScope.launch {
+            val existingProfile = profileRef.get().await()
+            val existingProfilePicture = existingProfile.getString("profilePicture")
+            val updatedProfile = profile.copy(profilePicture = existingProfilePicture!!)
+
+            profileRef.set(updatedProfile)
+
+        }
+
     }
 
 

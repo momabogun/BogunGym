@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -37,9 +38,6 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    private val viewModel: ExercisesViewModel by viewModels()
-
 
     private lateinit var navController: NavController
     private lateinit var hamNavigationView: NavigationView
@@ -83,7 +81,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.profileFragment -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.profileFragment)
                 R.id.customFragment2 -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.customFragment2)
                 R.id.settingsFragment -> findNavController(R.id.navHostFragmentFCV).navigate(R.id.settingsFragment)
-
             }
 
             return@setNavigationItemSelectedListener false

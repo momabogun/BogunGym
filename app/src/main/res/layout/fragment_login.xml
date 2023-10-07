@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:textAlignment="center"
-                android:textColor="?colorPrimary"
+                android:textColor="?colorOnSecondary"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -63,14 +63,14 @@
                 android:textColorHint="@color/SI_Grey"
                 android:hint="Email"
                 android:padding="8dp"
-                android:textColor="?colorPrimary" />
+                android:textColor="?colorOnSecondary" />
 
 
             <EditText
                 android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
@@ -80,7 +80,7 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="?colorPrimary" />
+                android:textColor="?colorOnSecondary" />
 
             <Button
                 android:id="@+id/loginBTN"
@@ -101,7 +101,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:text="@string/forgot_password"
-                android:textColor="?colorPrimary"
+                android:textColor="?colorOnSecondary"
                 android:textSize="18sp" />
 
 

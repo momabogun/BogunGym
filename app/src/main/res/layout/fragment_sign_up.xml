@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
                 android:textAlignment="center"
-                android:textColor="?colorPrimary"
+                android:textColor="?colorOnSecondary"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -61,24 +61,38 @@
                 android:drawableTint="?colorPrimary"
                 android:hint="Email"
                 android:padding="8dp"
-                android:textColor="?colorPrimary" />
+                android:textColor="?colorOnSecondary" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawablePadding="8dp"
+                android:drawableTint="?colorPrimary"
+                android:textColorHint="@color/SI_Grey"
+                android:ems="10"
+                android:hint="Password"
+                android:padding="8dp"
+                android:textColor="?colorOnSecondary" />
 
 
             <EditText
                 android:id="@+id/signUp_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColorHint="@color/SI_Grey"
                 android:drawableTint="?colorPrimary"
                 android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
+                android:hint="Confirm Password"
                 android:padding="8dp"
-                android:textColor="?colorPrimary" />
+                android:textColor="?colorOnSecondary" />
 
             <Button
                 android:id="@+id/signUpBTN"
@@ -99,7 +113,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:text="Already an user? Login"
-                android:textColor="?colorPrimary"
+                android:textColor="?colorOnSecondary"
                 android:textSize="18sp" />
 
 

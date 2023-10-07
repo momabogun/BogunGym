@@ -49,7 +49,13 @@ class SignUpFragment : Fragment() {
         binding.signUpBTN.setOnClickListener {
             val email = binding.signUpEmail.text.toString()
             val password = binding.signUpPassword.text.toString()
-            viewModel.signUp(email, password)
+            val confirmPassword = binding.editTextTextPassword.text.toString()
+            if (password == confirmPassword){
+                viewModel.signUp(email, password)
+            } else {
+                Toast.makeText(requireContext(),"Both passwords must be the same.",Toast.LENGTH_LONG).show()
+            }
+
         }
 
 
