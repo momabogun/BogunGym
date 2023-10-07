@@ -1,11 +1,13 @@
 package com.example.bogungym.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bogungym.data.model.BodyPart
+import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.Supplements
 import com.example.bogungym.databinding.ListItemBinding
 import com.example.bogungym.databinding.ListItemSupplementsBinding
@@ -20,7 +22,12 @@ class SupplementsAdapter(
 
     inner class ItemViewHolder(val binding: ListItemSupplementsBinding) : RecyclerView.ViewHolder(binding.root)
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun newData(newList: List<Supplements>) {
+        dataset = newList
+        notifyDataSetChanged()
 
+    }
 
 
 

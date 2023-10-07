@@ -13,9 +13,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.bogungym.data.AppRepository
+import com.example.bogungym.data.Datasource
 import com.example.bogungym.data.db.getDatabase
 import com.example.bogungym.data.model.Exercises
 import com.example.bogungym.data.model.FirebaseProfile
+import com.example.bogungym.data.model.Supplements
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.data.remote.ExercisesApi
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -43,7 +45,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     private val database = getDatabase(application)
     private val repository = AppRepository(ExercisesApi, database)
 
-
+    private var supplementsList = Datasource().loadSupplements()
 
     //EXERCISES
 
@@ -52,6 +54,27 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
 
     val pickedExercises = repository.pickedList
 
+    private var _supplements = MutableLiveData(supplementsList)
+    val supplements: LiveData<List<Supplements>>
+        get() = _supplements
+
+
+
+
+    fun userInput(text: String) {
+
+        if (text.isEmpty()) {
+            _supplements.value = supplementsList
+            return
+        }
+
+
+        supplementsList.filter {
+            it.name.lowercase().contains(text)
+        }.also {
+            _supplements.value = it
+        }
+    }
 
 
 
@@ -82,15 +105,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-
-
-
-
-
-
     //FIREBASE
-
-
 
 
     private val firebaseAuth = FirebaseAuth.getInstance()
@@ -101,9 +116,6 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     private var _user = MutableLiveData<FirebaseUser?>(firebaseAuth.currentUser)
     val user: LiveData<FirebaseUser?>
         get() = _user
-
-
-
 
 
     lateinit var profileRef: DocumentReference
@@ -118,9 +130,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-
-
-    fun deleteProfileCollection(){
+    fun deleteProfileCollection() {
         firebaseAuth.currentUser!!.delete()
         firebaseAuth.signOut()
         _user.value = firebaseAuth.currentUser
@@ -136,10 +146,6 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-
-
-
-
     fun deleteWorkout(name: String) {
         fireStore
             .collection("Profile")
@@ -147,7 +153,7 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
             .collection("workouts").document(name).delete()
     }
 
-    var workoutName:String = ""
+    var workoutName: String = ""
 
 
     fun addWorkout(workout: UserWorkout, name: String) {
@@ -161,14 +167,13 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
 
 
     }
+
     fun getWorkoutsReference(): CollectionReference {
         return fireStore
             .collection("Profile")
             .document(firebaseAuth.currentUser?.uid!!)
             .collection("workouts")
     }
-
-
 
 
     fun signUp(email: String, password: String) {
@@ -248,11 +253,10 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-
     val listOfExercises = mutableListOf<String>()
 
 
-    fun updateAllFalse(){
+    fun updateAllFalse() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateAllFalse()
         }
@@ -268,13 +272,9 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-
-
-
-
-
-    fun findExercisesInWorkout(name: String){
-        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid).collection("workouts").document(name)
+    fun findExercisesInWorkout(name: String) {
+        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
+            .collection("workouts").document(name)
             .get().addOnSuccessListener {
                 val workout = it.toObject(UserWorkout::class.java)
                 if (workout?.exercisesPicked != null) {
@@ -364,17 +364,17 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-
-
     fun addPickedExercise(id: String) {
         listOfExercises.add(id)
-        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid).collection("workouts").document(workoutName)
+        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
+            .collection("workouts").document(workoutName)
             .update("exercisesPicked", listOfExercises)
     }
 
     fun removePickedExercise(id: String) {
         listOfExercises.remove(id)
-        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid).collection("workouts").document(workoutName)
+        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
+            .collection("workouts").document(workoutName)
             .update("exercisesPicked", listOfExercises)
     }
 
