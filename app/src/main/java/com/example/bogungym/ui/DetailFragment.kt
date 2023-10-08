@@ -1,6 +1,7 @@
 package com.example.bogungym.ui
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +56,12 @@ class DetailFragment : Fragment() {
 
 
         viewModel.getExerciseByID(id).observe(viewLifecycleOwner) { exercise ->
+
+
+            binding.textView5.movementMethod = ScrollingMovementMethod()
+
+
+            binding.textView5.text = exercise.instructions.joinToString("\n★ ","★ ","")
 
 
 

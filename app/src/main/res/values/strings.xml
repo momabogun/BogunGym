@@ -56,6 +56,7 @@
     <string name="endurance_workout">ENDURANCE WORKOUT</string>
     <string name="women_muscle">WOMEN MUSCLE BUILD WORKOUT</string>
     <string name="conditional">CORE CONDITIONING</string>
+    <string name="u_instructions_u"><u>Instructions:</u></string>
 
 
 </resources>
