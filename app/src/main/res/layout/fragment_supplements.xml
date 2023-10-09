@@ -7,9 +7,9 @@
     tools:context=".ui.SupplementsFragment">
 
 
-    <SearchView
+    <EditText
         android:id="@+id/searchView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="32dp"
@@ -17,16 +17,20 @@
         android:layout_marginEnd="32dp"
         android:animationCache="true"
         android:background="@drawable/custom_edittext"
-        android:backgroundTint="#CCCCCC"
-        android:queryBackground="@null"
+        android:backgroundTint="#C0c0c0"
         android:elevation="10dp"
+        android:hint="Search"
+        android:drawableStart="@drawable/baseline_search_24"
+        android:drawablePadding="8dp"
+        android:drawableTint="?colorOnSecondary"
+        android:paddingLeft="8dp"
+        android:imeOptions="actionDone"
         android:iconifiedByDefault="false"
-        android:queryHint="Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </SearchView>
+    </EditText>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/supplementsRV"
