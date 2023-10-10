@@ -86,8 +86,6 @@ dependencies {
     implementation 'com.squareup.moshi:moshi-kotlin:1.15.0'
 
 
-    // Splash API
-    implementation 'androidx.core:core-splashscreen:1.0.1'
 
 
     implementation 'com.google.code.gson:gson:2.8.8'

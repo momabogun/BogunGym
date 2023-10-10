@@ -34,14 +34,9 @@ class AppRepository(private val api: ExercisesApi, private val database: Exercis
 
     suspend fun getExercises() {
 
-        try {
+        withContext(Dispatchers.IO){
             val exercises = api.retrofitService.getExercises()
-            if (database.exercisesDao.count() == 0) {
-                database.exercisesDao.insertAll(exercises)
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error loading data from API: $e")
-
+            database.exercisesDao.insertAll(exercises)
         }
     }
 

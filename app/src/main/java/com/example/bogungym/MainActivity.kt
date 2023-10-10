@@ -11,8 +11,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+
 import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -40,7 +39,6 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
     private lateinit var navController: NavController
     private lateinit var hamNavigationView: NavigationView
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
@@ -48,9 +46,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
 
-
-
-    fun toolbarChange(title: String){
+    fun toolbarChange(title: String) {
 
         supportActionBar?.title = title
     }
@@ -97,18 +93,18 @@ class MainActivity : AppCompatActivity() {
 
         val headerView = hamNavigationView.getHeaderView(0)
 
-        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
-
+        val isDarkMode =
+            (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
 
 
         val lightImage: ImageView = headerView.findViewById(R.id.light_image)
         val darkImage: ImageView = headerView.findViewById(R.id.dark_image)
 
 
-        if (isDarkMode){
+        if (isDarkMode) {
             lightImage.visibility = View.GONE
             darkImage.visibility = View.VISIBLE
-        } else{
+        } else {
             lightImage.visibility = View.VISIBLE
             darkImage.visibility = View.GONE
         }
@@ -124,9 +120,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
 
-
-
-            if (destination.id == R.id.aboutUsFragment ||destination.id == R.id.workoutSaveFragment ||destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
+            if (destination.id == R.id.aboutUsFragment || destination.id == R.id.workoutSaveFragment || destination.id == R.id.passwordResetFragment || destination.id == R.id.signUpFragment || destination.id == R.id.loginFragment || destination.id == R.id.profileFragment || destination.id == R.id.onboardingFragment) {
                 binding.bottomNavBMV.visibility = View.GONE
                 binding.appBarLayout.visibility = View.GONE
             } else {
@@ -154,7 +148,7 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-            if (destination.id == R.id.customFragment2 || destination.id == R.id.addWorkoutFragment){
+            if (destination.id == R.id.customFragment2 || destination.id == R.id.addWorkoutFragment) {
                 binding.appBarLayout.visibility = View.GONE
             }
 
@@ -193,14 +187,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-
-
-
-override fun onSupportNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.navHostFragmentFCV)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }

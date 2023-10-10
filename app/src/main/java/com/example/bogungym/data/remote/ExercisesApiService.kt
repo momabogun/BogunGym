@@ -34,7 +34,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ExercisesApiService {
-    @GET("exercises?limit=300")
+    @GET("exercises?limit=999")
     suspend fun getExercises(): List<Exercises>
 
 }
