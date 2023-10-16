@@ -1,14 +1,17 @@
 package com.example.bogungym
 
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -18,6 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -29,6 +33,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 
 import androidx.navigation.ui.setupWithNavController
+import coil.load
+import com.example.bogungym.data.model.FirebaseProfile
 import com.example.bogungym.databinding.ActivityMainBinding
 import com.example.bogungym.ui.CustomFragment
 import com.example.bogungym.ui.login.ProfileFragment
@@ -38,6 +44,9 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
+
+
+    private val viewModel: ExercisesViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var hamNavigationView: NavigationView
@@ -46,10 +55,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
 
+
+
     fun toolbarChange(title: String) {
 
         supportActionBar?.title = title
     }
+
+
+    fun setProfilePicture(){
+        viewModel.setProfile(binding.mainProfileImage)
+    }
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,9 +133,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
 
@@ -138,10 +154,12 @@ class MainActivity : AppCompatActivity() {
                     binding.logoIVLight.visibility = View.VISIBLE
                     binding.logoIVDark.visibility = View.GONE
                 }
-                binding.profileIV.visibility = View.VISIBLE
+                binding.mainProfileImage.visibility = View.VISIBLE
+                binding.mainProfileImage2.visibility = View.VISIBLE
 
             } else {
-                binding.profileIV.visibility = View.GONE
+                binding.mainProfileImage.visibility = View.GONE
+                binding.mainProfileImage2.visibility = View.GONE
 
                 binding.logoIVDark.visibility = View.GONE
                 binding.logoIVLight.visibility = View.GONE
@@ -156,7 +174,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        binding.profileIV.setOnClickListener {
+        binding.mainProfileImage.setOnClickListener {
             val navController = findNavController(R.id.navHostFragmentFCV)
             navController.navigate(R.id.profileFragment)
         }

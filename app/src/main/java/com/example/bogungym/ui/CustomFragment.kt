@@ -18,6 +18,7 @@ import com.example.bogungym.utils.SwipeGesture
 import com.example.bogungym.adapter.CustomAdapter
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.databinding.FragmentCustomBinding
+import com.example.bogungym.ui.login.ProfileFragmentDirections
 
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.toObjects
@@ -51,6 +52,7 @@ class CustomFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
 
         binding.newWorkBTN.setOnClickListener {
             viewModel.updateAllFalse()

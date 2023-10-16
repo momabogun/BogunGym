@@ -1,10 +1,12 @@
 package com.example.bogungym.ui.login
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -12,12 +14,17 @@ import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.databinding.FragmentLoginBinding
 import com.example.bogungym.databinding.FragmentOnboardingBinding
-
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.GoogleAuthProvider
 
 
 class OnboardingFragment : Fragment() {
 
-//    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var googleSignInClient: GoogleSignInClient
 //
 //    private lateinit var auth: FirebaseAuth
 
@@ -68,24 +75,11 @@ class OnboardingFragment : Fragment() {
             binding.onboardIV.visibility = View.VISIBLE
         }
 
-
-//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//            .requestIdToken("479279906166-httc70cg2gcr2frgkqhntstg4kq8g1gd.apps.googleusercontent.com")
-//            .requestEmail()
-//            .build()
-//
-//
-//        googleSignInClient= GoogleSignIn.getClient(requireActivity(),gso)
-//
-//        binding.googleBTN.setOnClickListener {
-//            signIn()
-//        }
-
-        binding.emailOnboardBTN.setOnClickListener {
+        binding.signUpBTN.setOnClickListener {
             findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToSignUpFragment())
         }
 
-        binding.loginTV.setOnClickListener {
+        binding.signInBTN.setOnClickListener {
             findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment())
         }
 
@@ -100,6 +94,14 @@ class OnboardingFragment : Fragment() {
 
 
 
+
     }
 
-}
+
+
+
+
+
+
+
+    }

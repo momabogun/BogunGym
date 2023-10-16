@@ -2,6 +2,7 @@ package com.example.bogungym
 
 import android.app.Application
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import coil.load
 import com.example.bogungym.data.AppRepository
 import com.example.bogungym.data.Datasource
 import com.example.bogungym.data.db.getDatabase
@@ -21,6 +23,7 @@ import com.example.bogungym.data.model.Supplements
 import com.example.bogungym.data.model.UserWorkout
 import com.example.bogungym.data.remote.ExercisesApi
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthEmailException
 import com.google.firebase.auth.FirebaseAuthException
@@ -59,8 +62,6 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
         get() = _supplements
 
 
-
-
     fun userInput(text: String) {
 
         if (text.isEmpty()) {
@@ -75,8 +76,6 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
             _supplements.value = it
         }
     }
-
-
 
 
     fun getExercises(target: String): LiveData<List<Exercises>> =
@@ -136,6 +135,21 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
         _user.value = firebaseAuth.currentUser
 
     }
+
+    //Google login
+
+//    fun updateUI(account: GoogleSignInAccount) {
+//        val credential = GoogleAuthProvider.getCredential(account.idToken,null)
+//        firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
+//            if (it.isSuccessful) {
+//                val name = account.displayName!!
+//                val id = firebaseAuth.uid!!
+//                val email = account.email!!
+//                _user.value = firebaseAuth.currentUser
+//            }
+//        }
+//
+//    }
 
 
     fun setupUserEnv() {
@@ -341,45 +355,61 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
 
-    fun uploadImage(uri: Uri) {
-        val imageRef = storageRef.child("images/${user.value?.uid}/profilePic")
-        val uploadTask = imageRef.putFile(uri)
+    fun setProfile(image: ShapeableImageView) {
+        profileRef.addSnapshotListener { snapshot, error ->
+            if (error == null && snapshot != null) {
 
+                val updatedProfile = snapshot.toObject(FirebaseProfile::class.java)
+                if (updatedProfile != null) {
+                    image.load(updatedProfile.profilePicture)
 
-        uploadTask.addOnCompleteListener {
-            imageRef.downloadUrl.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    setImage(it.result)
+                } else {
+                    Log.e("Snapshot Error", "$error")
                 }
             }
         }
     }
 
 
-    // Funktion um Url zu neue hochgeladenem Bild im Firestore upzudaten
-    private fun setImage(uri: Uri) {
-        profileRef.update("profilePicture", uri.toString()).addOnFailureListener {
-            Log.w("ERROR", "Error writing document: $it")
+
+        fun uploadImage(uri: Uri) {
+            val imageRef = storageRef.child("images/${user.value?.uid}/profilePic")
+            val uploadTask = imageRef.putFile(uri)
+
+
+            uploadTask.addOnCompleteListener {
+                imageRef.downloadUrl.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        setImage(it.result)
+                    }
+                }
+            }
         }
+
+        private fun setImage(uri: Uri) {
+            profileRef.update("profilePicture", uri.toString()).addOnFailureListener {
+                Log.w("ERROR", "Error writing document: $it")
+            }
+        }
+
+
+        fun addPickedExercise(id: String) {
+            listOfExercises.add(id)
+            fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
+                .collection("workouts").document(workoutName)
+                .update("exercisesPicked", listOfExercises)
+        }
+
+        fun removePickedExercise(id: String) {
+            listOfExercises.remove(id)
+            fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
+                .collection("workouts").document(workoutName)
+                .update("exercisesPicked", listOfExercises)
+        }
+
+
     }
 
-
-    fun addPickedExercise(id: String) {
-        listOfExercises.add(id)
-        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
-            .collection("workouts").document(workoutName)
-            .update("exercisesPicked", listOfExercises)
-    }
-
-    fun removePickedExercise(id: String) {
-        listOfExercises.remove(id)
-        fireStore.collection("Profile").document(firebaseAuth.currentUser!!.uid)
-            .collection("workouts").document(workoutName)
-            .update("exercisesPicked", listOfExercises)
-    }
-
-
-}
 
 
 

@@ -18,6 +18,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.bogungym.ExercisesViewModel
+import com.example.bogungym.MainActivity
 import com.example.bogungym.R
 import com.example.bogungym.data.model.FirebaseProfile
 import com.example.bogungym.databinding.FragmentProfileBinding
@@ -115,6 +116,11 @@ class ProfileFragment : Fragment() {
             builder.create().show()
 
         }
+
+
+        val mainActivity = activity as MainActivity
+
+
 
 
 

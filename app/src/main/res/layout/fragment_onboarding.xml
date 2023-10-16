@@ -9,40 +9,42 @@
 
 
     <Button
-        android:id="@+id/email_onboardBTN"
+        android:id="@+id/signUpBTN"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="?colorPrimary"
-        android:drawableLeft="@drawable/baseline_email_24"
         android:drawableTint="?colorOnPrimary"
-        android:text="Sign up with Email"
-
-        android:textAlignment="textStart"
+        android:gravity="center"
+        android:text="Sign up"
+        app:cornerRadius="20dp"
         android:textColor="?colorOnPrimary"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/facebookBTN"
+        android:id="@+id/signInBTN"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="?colorPrimary"
-        android:drawableLeft="@drawable/com_facebook_favicon_blue"
-        android:drawablePadding="8dp"
-        android:text="Sign up with Facebook"
-        android:textAlignment="textStart"
+        android:layout_marginEnd="24dp"
 
+        android:backgroundTint="?colorPrimary"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:text="Login"
         android:textColor="?colorOnPrimary"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_onboardBTN" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView2"
@@ -68,46 +70,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/googleBTN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="?colorPrimary"
-        android:drawableLeft="@drawable/googleg_standard_color_18"
-        android:drawablePadding="8dp"
-        android:text="Sign up with Google"
-        android:textAlignment="textStart"
-        android:textColor="?colorOnPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebookBTN" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="333dp"
         android:layout_height="63dp"
-        android:layout_marginTop="16dp"
-        android:textColor="?colorOnSecondary"
+        android:layout_marginBottom="16dp"
         android:gravity="end"
         android:text="@string/by_tapping_continue_you_agree_to_our_terms_and_acknowledge_that_you_have_read_our_privacy_policy"
-        app:layout_constraintEnd_toEndOf="@+id/googleBTN"
-        app:layout_constraintTop_toBottomOf="@+id/googleBTN" />
-
-    <TextView
-        android:id="@+id/loginTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/have_an_account_log_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:textColor="?colorOnSecondary"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/signInBTN" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -119,5 +91,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Already have an account?"
+        android:textColor="?colorOnSecondary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBTN" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

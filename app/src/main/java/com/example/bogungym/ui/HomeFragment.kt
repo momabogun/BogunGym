@@ -42,6 +42,7 @@ class HomeFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val mainActivity = activity as MainActivity
 
 
 
@@ -49,6 +50,8 @@ class HomeFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner){
             if (it == null){
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToOnboardingFragment())
+            } else{
+                mainActivity.setProfilePicture()
             }
         }
 
