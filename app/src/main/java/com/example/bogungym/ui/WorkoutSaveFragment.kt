@@ -45,18 +45,7 @@ class WorkoutSaveFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-//        fun insertWorkout(){
-//
-//            val name = binding.myWorkET.text.toString()
-//            var list: List<Exercises> = listOf()
-//            viewModel.pickedExercises.observe(viewLifecycleOwner){exercises->
-//                if (exercises != null) {
-//                    list = exercises
-//                }
-//            }
-//
-//            viewModel.insertWorkout(UserWorkout(0,name,list))
-//        }
+
 
 
         val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES

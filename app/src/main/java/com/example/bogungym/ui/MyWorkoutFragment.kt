@@ -28,11 +28,6 @@ class MyWorkoutFragment : Fragment() {
 
     private lateinit var workoutIdentifier: String
 
-    private lateinit var workoutDocumentReference: DocumentReference
-
-
-    private lateinit var user: FirebaseUser
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,11 +61,6 @@ class MyWorkoutFragment : Fragment() {
         val mainActivity = activity as MainActivity
 
         mainActivity.toolbarChange(workoutIdentifier)
-
-
-
-
-
 
 
         val adapter = MyWorkoutAdapter(emptyList(), viewModel, requireContext())

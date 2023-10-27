@@ -19,8 +19,6 @@ class WorkoutFragment : Fragment() {
 
     private lateinit var binding: FragmentWorkoutBinding
 
-    private val viewModel: ExercisesViewModel by activityViewModels()
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

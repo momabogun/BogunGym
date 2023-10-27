@@ -14,6 +14,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
@@ -45,7 +46,6 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity() {
 
 
-
     private val viewModel: ExercisesViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -55,24 +55,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
 
-
-
     fun toolbarChange(title: String) {
 
         supportActionBar?.title = title
     }
 
 
-    fun setProfilePicture(){
+    fun setProfilePicture() {
         viewModel.setProfile(binding.mainProfileImage)
     }
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        installSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

@@ -84,7 +84,8 @@
             app:layout_constraintEnd_toEndOf="@+id/chooseBTN"
             app:layout_constraintStart_toStartOf="@+id/chooseBTN"
             app:layout_constraintTop_toTopOf="@+id/chooseBTN"
-            app:srcCompat="@drawable/baseline_circle_24_full" />
+            app:srcCompat="@drawable/baseline_circle_24_full"
+            app:tint="?colorSecondaryVariant" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

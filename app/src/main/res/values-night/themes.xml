@@ -7,11 +7,17 @@
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#000000</item>
-        <item name="colorSecondaryVariant">@color/orange</item>
+        <item name="colorSecondaryVariant">#00897B</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/black</item>
 
 
+    </style>
+
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/ic_launcher_dark_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_dark_round</item>
+        <item name="postSplashScreenTheme">@style/Theme.Bogun</item>
     </style>
 </resources>

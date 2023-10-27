@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.MainActivity
+import com.example.bogungym.R
 import com.example.bogungym.utils.SwipeGesture
 import com.example.bogungym.adapter.CustomAdapter
 import com.example.bogungym.data.model.UserWorkout
@@ -51,6 +53,8 @@ class CustomFragment : Fragment() {
     }
 
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
@@ -61,6 +65,10 @@ class CustomFragment : Fragment() {
 
 
         val mainActivity = activity as MainActivity
+
+
+
+
 
 
 
@@ -107,29 +115,13 @@ class CustomFragment : Fragment() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
+
+
+
 }
+
+
 

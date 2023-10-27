@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-        android:logo="@drawable/screenshot_2023_05_09_at_19_06_59"
+        android:logo="@drawable/_toolbar_light"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,6 +23,7 @@
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.App.SplashScreen"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

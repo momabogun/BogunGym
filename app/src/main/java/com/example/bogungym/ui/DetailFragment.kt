@@ -61,7 +61,7 @@ class DetailFragment : Fragment() {
             binding.textView5.movementMethod = ScrollingMovementMethod()
 
 
-            binding.textView5.text = exercise.instructions.joinToString("\n★ ","★ ","")
+            binding.textView5.text = exercise.instructions.joinToString("\n● ","● ","")
 
 
 
