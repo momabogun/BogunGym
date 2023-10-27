@@ -9,7 +9,7 @@ The Bogun Gym Workout App is a fitness application developed in Kotlin that allo
 
 ## Screenshots
 
-![Screenshot 1](pic/dfggdfgdf)
+![Screenshot 1](readme/bogungymreadme.png)
 
 
 ## Installation
