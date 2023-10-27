@@ -21,6 +21,8 @@ import com.example.bogungym.R
 import com.example.bogungym.adapter.GymAdapter
 import com.example.bogungym.data.Datasource
 import com.example.bogungym.databinding.FragmentHomeBinding
+import com.example.bogungym.utils.NetworkMonitor
+import org.checkerframework.checker.units.qual.Length
 
 class HomeFragment : Fragment() {
 
@@ -30,6 +32,36 @@ class HomeFragment : Fragment() {
 
 
     private lateinit var binding: FragmentHomeBinding
+
+    private var networkMonitor: NetworkMonitor? = null
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        networkMonitor = NetworkMonitor(requireContext()) { isConnected ->
+            if (isConnected) {
+                viewModel.loadExercises()
+            } else {
+                // No internet connection
+                Toast.makeText(requireContext(),"Sorry, no internet connection.", Toast.LENGTH_LONG ).show()
+            }
+        }
+
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        networkMonitor?.startNetworkMonitoring()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        networkMonitor?.stopNetworkMonitoring()
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

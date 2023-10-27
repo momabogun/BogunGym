@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
@@ -14,6 +15,7 @@ import com.example.bogungym.ExercisesViewModel
 import com.example.bogungym.R
 import com.example.bogungym.databinding.FragmentLoginBinding
 import com.example.bogungym.databinding.FragmentOnboardingBinding
+import com.example.bogungym.utils.NetworkMonitor
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -32,8 +34,35 @@ class OnboardingFragment : Fragment() {
     val viewModel: ExercisesViewModel by activityViewModels()
     private lateinit var binding: FragmentOnboardingBinding
 
+    private var networkMonitor: NetworkMonitor? = null
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        networkMonitor = NetworkMonitor(requireContext()) { isConnected ->
+            if (isConnected) {
+
+                viewModel.loadExercises()
+            } else {
+                // No internet connection
+                Toast.makeText(requireContext(),"Sorry, no internet connection.", Toast.LENGTH_LONG ).show()
+            }
+        }
+
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        networkMonitor?.startNetworkMonitoring()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        networkMonitor?.stopNetworkMonitoring()
+    }
 
 
     override fun onCreateView(
@@ -44,21 +73,6 @@ class OnboardingFragment : Fragment() {
         return binding.root
     }
 
-
-
-
-
-//
-//    private fun signIn(){
-//
-//        val signInIntent = googleSignInClient.signInIntent
-//        startActivityForResult(signInIntent,RC_SIGN_IN)
-//    }
-//
-//    companion object{
-//        const val RC_SIGN_IN = 1001
-//        const val EXTRA_NAME = "EXTRA NAME"
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

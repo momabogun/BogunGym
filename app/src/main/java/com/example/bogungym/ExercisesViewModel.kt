@@ -85,9 +85,6 @@ class ExercisesViewModel(application: Application) : AndroidViewModel(applicatio
     fun getExerciseByID(id: String): LiveData<Exercises> = repository.getExerciseByID(id)
 
 
-    init {
-        loadExercises()
-    }
 
 
     fun loadExercises() {

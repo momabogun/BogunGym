@@ -41,6 +41,10 @@ interface ExercisesDao {
     fun updateAllFalse()
 
 
+    @Query("SELECT EXISTS(SELECT * FROM exercise_table WHERE id=:id) ")
+    fun exerciseExists(id: Int): Boolean
+
+
 
 
 

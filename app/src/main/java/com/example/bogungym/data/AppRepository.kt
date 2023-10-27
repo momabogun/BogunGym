@@ -32,6 +32,9 @@ class AppRepository(private val api: ExercisesApi, private val database: Exercis
 
     val pickedList : LiveData<List<Exercises>> = database.exercisesDao.getUserPicked()
 
+
+
+
     suspend fun getExercises() {
 
         withContext(Dispatchers.IO){
