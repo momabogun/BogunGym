@@ -1,10 +1,10 @@
-# Bogun Gym Workout App
+# Bogun Gym Training App
 
 ![Logo](readme/2.png)
 
 ## Overview
 
-The Bogun Gym Workout App is a fitness application developed in Kotlin that allows users to access a wide range of exercises and workouts. This app is built using a variety of modern technologies and design patterns, including Gson, Moshi, Retrofit, ExercisesDB API, Firebase for user authentication and preferences, Dark Mode, Room Database, and MVVM architecture.
+The Bogun Gym Training App is a fitness application developed in Kotlin that allows users to access a wide range of exercises and workouts. This app is built using a variety of modern technologies and design patterns, including Gson, Moshi, Retrofit, ExercisesDB API, Firebase for user authentication and preferences, Dark Mode, Room Database, and MVVM architecture.
 
 
 ## Screenshots
@@ -57,5 +57,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need assistance, please contact the app's developer at [Momcilo Bogunovic](https://github.com/momabogun).
 
-Thank you for using the Bogun Gym Workout App! Stay fit and healthy.
+Thank you for using the Bogun Gym Training App! Stay fit and healthy.
 
