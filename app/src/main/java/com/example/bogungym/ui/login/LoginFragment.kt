@@ -33,14 +33,14 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        val isDarkMode =
+            (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
 
-        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
 
-
-        if (isDarkMode){
+        if (isDarkMode) {
             binding.lightLIV.visibility = View.GONE
             binding.imageView7.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.imageView7.visibility = View.GONE
             binding.lightLIV.visibility = View.VISIBLE
         }
@@ -48,24 +48,22 @@ class LoginFragment : Fragment() {
         binding.loginBTN.setOnClickListener {
             val email = binding.loginEmail.text.toString()
             val password = binding.loginPassword.text.toString()
-
             viewModel.login(email, password)
 
         }
-            binding.goSignUpTV.setOnClickListener {
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToPasswordResetFragment())
-            }
-
-
-
-            viewModel.user.observe(viewLifecycleOwner) {
-                if (it != null) {
-                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
-                }
-            }
-
-
-
+        binding.goSignUpTV.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToPasswordResetFragment())
         }
 
+
+        //Checking if user is already logged in, if user is already logged in directing to Home Fragment
+        viewModel.user.observe(viewLifecycleOwner) {
+            if (it != null) {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            }
+        }
+
+
     }
+
+}

@@ -34,24 +34,14 @@ import kotlin.math.pow
 class ProfileFragment : Fragment() {
 
     val viewModel: ExercisesViewModel by activityViewModels()
-
-
     private lateinit var binding: FragmentProfileBinding
 
-
-
+    // Activity Result to get content (e.g., images)
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if (uri != null) {
             viewModel.uploadImage(uri)
         }
     }
-
-
-
-
-
-
-
 
     private lateinit var user: FirebaseUser
 
@@ -117,13 +107,6 @@ class ProfileFragment : Fragment() {
 
         }
 
-
-        val mainActivity = activity as MainActivity
-
-
-
-
-
         binding.bmiTV.setOnClickListener {
             calculateBMI()
         }
@@ -136,7 +119,7 @@ class ProfileFragment : Fragment() {
 
 
 
-
+// Observe changes in the user data and navigate if user is null
         viewModel.user.observe(viewLifecycleOwner){
             if (it == null){
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOnboardingFragment())

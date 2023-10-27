@@ -26,34 +26,28 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class OnboardingFragment : Fragment() {
 
-    private lateinit var googleSignInClient: GoogleSignInClient
-//
-//    private lateinit var auth: FirebaseAuth
-
-
     val viewModel: ExercisesViewModel by activityViewModels()
     private lateinit var binding: FragmentOnboardingBinding
-
     private var networkMonitor: NetworkMonitor? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //Checking if device is connected to Internet
         networkMonitor = NetworkMonitor(requireContext()) { isConnected ->
             if (isConnected) {
 
                 viewModel.loadExercises()
             } else {
                 // No internet connection
-                Toast.makeText(requireContext(),"Sorry, no internet connection.", Toast.LENGTH_LONG ).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Sorry, no internet connection.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
-
-
     }
-
-
     override fun onResume() {
         super.onResume()
         networkMonitor?.startNetworkMonitoring()
@@ -77,14 +71,15 @@ class OnboardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Checking if device is in Dark Mode
+        val isDarkMode =
+            (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
 
-        val isDarkMode = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
 
-
-        if (isDarkMode){
+        if (isDarkMode) {
             binding.onboardIV.visibility = View.GONE
             binding.imageView6.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.imageView6.visibility = View.GONE
             binding.onboardIV.visibility = View.VISIBLE
         }
@@ -99,23 +94,15 @@ class OnboardingFragment : Fragment() {
 
 
 
-        viewModel.user.observe(viewLifecycleOwner){
-            if(it != null){
+        //Checking if user is already logged in, if user is already logged in directing to Home Fragment
+        viewModel.user.observe(viewLifecycleOwner) {
+            if (it != null) {
                 findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToHomeFragment())
             }
         }
 
 
-
-
-
     }
 
 
-
-
-
-
-
-
-    }
+}
