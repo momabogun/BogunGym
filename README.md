@@ -16,6 +16,19 @@ The Bogun Gym Training App is a fitness application developed in Kotlin that all
 
 To set up and run the Bogun Gym Workout App, follow the steps below:
 
+1. Clone the repository
+
+2. Open the project in Android Studio.
+
+3. Configure Firebase for authentication:
+- Create a new project on the Firebase Console.
+- Configure your app in the Firebase project settings.
+- Download the google-services.json file and place it in the app module of the project.
+
+4. Build and run the app on your Android device or emulator.
+
+
+
 ## Configuration
 
 Before running the app, you may need to configure the following:
